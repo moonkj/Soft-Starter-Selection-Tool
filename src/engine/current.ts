@@ -24,12 +24,11 @@ export function calcCurrent(volt: number, capInput: number, unit: Unit) {
     I = c
     formula = '모터 정격전류 직접 입력'
   } else {
-    kw = unit === 'HP' ? c * 0.746 : c
+    kw = c
     const k = kFactor(kw, volt)
     I = (kw * 1000) / (SQ3 * volt * k)
     formula =
-      `I = P / (√3 · V · η·cosφ) = ${+kw.toFixed(2)}kW / (√3 · ${volt}V · ${k.toFixed(2)}) ≈ ${fmtA(I)} A` +
-      (unit === 'HP' ? `  (${c}HP × 0.746)` : '')
+      `I = P / (√3 · V · η·cosφ) = ${+kw.toFixed(2)}kW / (√3 · ${volt}V · ${k.toFixed(2)}) ≈ ${fmtA(I)} A`
   }
   return { I, kw, formula }
 }

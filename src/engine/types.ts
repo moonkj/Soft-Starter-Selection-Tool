@@ -1,7 +1,7 @@
 // 엔진(순수 함수)과 UI 사이의 계약. 양쪽 모두 이 파일만 기준으로 한다.
 /** 조작전원: AC110V / AC220V / AC380~440V(SSC만) / DC24V. 시리즈마다 형명 코드가 다르다(SSC·SSM C1/C2, LSFS 1/2, LVSS -1/-2 또는 공통). */
 export type ControlPower = 'AC110' | 'AC220' | 'AC380' | 'DC24'
-export type Unit = 'kW' | 'HP' | 'A'
+export type Unit = 'kW' | 'A'
 export type LoadKey = 'pump' | 'fan' | 'comp' | 'conv' | 'mixer' | 'crusher'
 
 /** 화면에서 넘기는 조건. 입력이 바뀔 때마다 select()를 다시 부른다. */

@@ -131,7 +131,7 @@ export default function App() {
             <Library />
 
             <footer>
-              정격값은 첨부 카탈로그(Motorsol 2018, LVSS BeyondX, SSC·SSM·SSH 2023.05) 기준이에요. kW·HP를 전류로 바꿀 때는 효율×역률 근사값을 써서 실제 명판 전류와 차이가 날 수 있어요. 최종 선정은 기술상담으로 확인해 주세요.
+              정격값은 첨부 카탈로그(Motorsol 2018, LVSS BeyondX, SSC·SSM·SSH 2023.05) 기준이에요. kW를 전류로 바꿀 때는 효율×역률 근사값을 써서 실제 명판 전류와 차이가 날 수 있어요. 최종 선정은 기술상담으로 확인해 주세요.
             </footer>
           </main>
         </div>

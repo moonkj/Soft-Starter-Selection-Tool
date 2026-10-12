@@ -10,7 +10,9 @@ const strip = (m) => {
   let code = m.code.replace(/-\{V4\|V6\}-\{C1\|C2\}$/, '').replace(/-\{V5\|V7\}-\{C1\|C2\}$/, '').replace(/ \{50\|60\}Hz$/, '')
   const ssh = /^SSH-\{L\|M\|P\}-(\d{4})-\{V02\.\.V13\}$/.exec(m.code)
   if (ssh) code = `SSH-${ssh[1]}`
-  return { ...m, code, ratings: { ...m.ratings } }
+  // SSH: 원본 메모의 '2.3/4.16kV는 1000A까지'는 카탈로그(22~23쪽)에 없는 내용이라 뺀다
+  const notes = m.series === 'ssh' ? '' : m.notes
+  return { ...m, code, notes, ratings: { ...m.ratings } }
 }
 const models = []
 for (const m of src.models) {

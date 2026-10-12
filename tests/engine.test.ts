@@ -103,9 +103,15 @@ describe('SSH 형명 조합기', () => {
     const o = { sc: 'SC25', e: 'E2', f: 'F1', l: 'L3', b: 'B1', pf: 'PF0' }
     expect(ssh(select({ ...mv, panel: 'P', ssh: o })).model).toBe('SSH-P-0110-V06-SC25-E2-F1-L3-B1-PF0')
   })
-  it('4.4kV 이하는 1000A까지만', () => {
-    const r = select({ ...mv, volt: 4160, cap: 1100 })
-    expect(r.excluded.find((e) => e.seriesId === 'ssh')?.reason).toMatch(/^정격 초과 \(최대 1000 A\)/)
+  it('카탈로그에 전압별 용량 제한이 없어서 4160V에서도 1700A까지 선정된다', () => {
+    expect(ssh(select({ ...mv, volt: 4160, cap: 1100 })).model).toBe('SSH-L-1100-V04')
+    expect(ssh(select({ ...mv, volt: 2300, cap: 1700 })).model).toBe('SSH-L-1700-V02')
+    const r = select({ ...mv, volt: 4160, cap: 1701 })
+    expect(r.excluded.find((e) => e.seriesId === 'ssh')?.reason).toMatch(/^정격 초과 \(최대 1700 A\)/)
+  })
+  it('카탈로그에 없는 전압은 지원하지 않는다 (±10% 허용 없음)', () => {
+    expect(select({ ...mv, volt: 4400 }).excluded.find((e) => e.seriesId === 'ssh')?.reason).toMatch(/2\.3 \/ 3\.3/)
+    expect(select({ ...mv, volt: 6600 }).ok.some((o) => o.seriesId === 'ssh')).toBe(true)
   })
   it('용량 행을 숨기면 다음 용량이 선정된다', () => {
     expect(ssh(select(mv, { hidden: new Set(['ssh|SSH-0110']) })).model).toBe('SSH-L-0200-V06')

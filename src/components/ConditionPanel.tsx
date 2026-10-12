@@ -79,10 +79,10 @@ export default function ConditionPanel({ s, set }: { s: FormState; set: (p: Part
           <input type="number" id="cap" className="grow num" min="0" step="any" inputMode="decimal"
             value={s.cap} onChange={(e) => set({ cap: e.target.value })} />
           <select id="unit" className="unit" value={s.unit} onChange={(e) => set({ unit: e.target.value as Unit })}>
-            <option value="kW">kW</option><option value="HP">HP</option><option value="A">A (모터 정격전류)</option>
+            <option value="kW">kW</option><option value="A">A (모터 정격전류)</option>
           </select>
         </div>
-        <span className="hint">{s.unit === 'A' ? '모터 명판의 정격전류를 그대로 써요.' : '모터 명판의 정격전류(A)를 알면 A로 넣는 게 가장 정확해요. kW·HP는 일반 효율로 환산해서 카탈로그 kW표나 북미 명판 전류와 다를 수 있어요.'}</span>
+        <span className="hint">{s.unit === 'A' ? '모터 명판의 정격전류를 그대로 써요.' : '모터 명판의 정격전류(A)를 알면 A로 넣는 게 가장 정확해요. kW는 일반 효율로 환산해서 카탈로그 kW표와 다를 수 있어요.'}</span>
       </div>
 
       <div className="field">

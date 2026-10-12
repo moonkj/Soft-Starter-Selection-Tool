@@ -62,11 +62,11 @@
  },
  {
   "id": "C2",
-  "desc": "480V 60Hz 100HP 컨베이어, UL/cETL 필수",
+  "desc": "480V 60Hz 74.6kW(100HP) 컨베이어, UL/cETL 필수",
   "input": {
    "volt": "480",
-   "cap": "100",
-   "unit": "HP",
+   "cap": "74.6",
+   "unit": "kW",
    "load": "conv",
    "na": true
   },

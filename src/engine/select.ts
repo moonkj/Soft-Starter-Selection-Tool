@@ -116,18 +116,17 @@ function evaluate(id: string, ctx: Ctx): Eval {
 
   if (id === 'ssh') {
     const STD: [number, string][] = [[2300, 'V02'], [3300, 'V03'], [4160, 'V04'], [6600, 'V06'], [11000, 'V11'], [13800, 'V13']]
-    const vv = STD.find(([nv]) => Math.abs(v - nv) / nv <= 0.1)
-    if (!vv) return { x: '전압 미지원' }
-    const max = v <= 4400 ? 1000 : 1700
+    // 카탈로그 22쪽: 입력전압은 V02~V13 여섯 가지(2300/3300/4160/6600/11000/13800V)만 있고, 용량(70~1700A)은 전압과 무관하게 고른다.
+    const vv = STD.find(([nv]) => v === nv)
+    if (!vv) return { x: 'SSH는 2.3 / 3.3 / 4.16 / 6.6 / 11 / 13.8kV만 지원해요' }
     const o = c.ssh
     const picked = !!o && !allEmpty(o)
     const sfx = picked ? `-${q(o.sc, 'SC??')}-${q(o.e, 'E?')}-${q(o.f, 'F?')}-${q(o.l, 'L?')}-${q(o.b, 'B?')}-${q(o.pf, 'PF?')}` : ''
     // 형명: SSH-{판넬}-{용량}-{전압}[-SC-E-F-L-B-PF]. 모델 행은 용량 단위, 나머지는 조건으로 조합한다.
     const list: Item[] = modelsOf(id)
-      .filter((m) => (m.ratings.scr_A as number) <= max)
       .map((m) => ({ a: m.ratings.scr_A as number, code: `SSH-${panel === '' ? '?' : panel}-${m.code.slice(4)}-${vv[1]}${sfx}`, model: m }))
     const res = pickFrom(list, need)
-    if (!res) return { x: list.length ? `정격 초과 (최대 ${max} A)` : SOLD_OUT }
+    if (!res) return { x: maxMsg(list) }
     if (amb > 50) warn.push('SSH는 주위온도 50°C 이상에서 용량 저감이 필요해요. (카탈로그 23쪽) 기술 확인이 필요해요.')
     info.push(picked ? DESIGN_CHECK : '단락용량(SC), 판넬 구성(E), 퓨즈·입력측 보호·바이패스·PFC는 옵션 코드로 따로 정해요.')
     if (c.na) info.push('북미는 P 시리즈(NEMA 표준) 판넬로 대응해요. UL 인증 여부는 기술 확인이 필요해요.')
