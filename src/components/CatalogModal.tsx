@@ -3,7 +3,7 @@ import type { Recommendation } from '../engine/types'
 import '../styles/results.css'
 import { CAT, asset } from './common'
 
-export default function CatalogModal({ r, onClose }: { r: Recommendation | null; onClose: () => void }) {
+export default function CatalogModal({ r, openKey, onClose }: { r: Recommendation | null; openKey?: number; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null)
   const imgBox = useRef<HTMLDivElement>(null)
   const [idx, setIdx] = useState(0)
@@ -16,9 +16,13 @@ export default function CatalogModal({ r, onClose }: { r: Recommendation | null;
       if (!d.open) {
         if (typeof d.showModal === 'function') d.showModal()
         else d.setAttribute('open', '')
+        // 열릴 때 닫기 버튼으로 포커스(이름 없는 영역이 먼저 잡히지 않게)
+        window.setTimeout(() => d.querySelector<HTMLElement>('.x')?.focus(), 0)
       }
     } else if (d.open) d.close()
-  }, [r])
+  }, [r, openKey])
+
+  const close = () => { ref.current?.close(); onClose() }
 
   useEffect(() => {
     if (imgBox.current) imgBox.current.scrollTop = 0
@@ -30,8 +34,8 @@ export default function CatalogModal({ r, onClose }: { r: Recommendation | null;
   const name = r ? `${r.line} ${r.seriesName}` : ''
 
   return (
-    <dialog className="cat-dlg" ref={ref} aria-labelledby="dlg-t" onClose={onClose}
-      onClick={(e) => { if (e.target === ref.current) ref.current?.close() }}>
+    <dialog className="cat-dlg" ref={ref} aria-labelledby="dlg-t" onClose={onClose} onCancel={() => onClose()}
+      onClick={(e) => { if (e.target === ref.current) close() }}>
       {r && c && (
         <div className="dlg">
           <aside className="dlg-side">
@@ -39,7 +43,7 @@ export default function CatalogModal({ r, onClose }: { r: Recommendation | null;
             <span className="hint">{c.title}</span>
             {pages.map((p, i) => (
               <button key={p.page + p.label} type="button" className="pg" aria-current={i === idx} onClick={() => setIdx(i)}>
-                {p.label}<span>p.{p.page}</span>
+                {p.label}<span>{p.page}쪽</span>
               </button>
             ))}
             <a className="pg" href={asset(c.file)} target="_blank" rel="noopener" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -48,9 +52,9 @@ export default function CatalogModal({ r, onClose }: { r: Recommendation | null;
           </aside>
           <div className="dlg-main">
             <div className="dlg-bar">
-              <div className="t" id="dlg-t">{name} · {cur.label} (p.{cur.page})</div>
-              <a className="btn primary" target="_blank" rel="noopener" href={`${asset(c.file)}#page=${cur.page}`}>PDF 원본 열기 (p.{cur.page})</a>
-              <button className="x" type="button" aria-label="닫기" onClick={() => ref.current?.close()}>×</button>
+              <div className="t" id="dlg-t">{name} · {cur.label} ({cur.page}쪽)</div>
+              <a className="btn primary" target="_blank" rel="noopener" href={`${asset(c.file)}#page=${cur.page}`}>PDF 원본 열기 ({cur.page}쪽)</a>
+              <button className="x" type="button" aria-label="닫기" autoFocus onClick={close}>×</button>
             </div>
             <div className="dlg-img" ref={imgBox}>
               <img src={asset(`pages/${c.img}-${cur.page}.jpg`)} alt={`${c.title} ${cur.page}쪽 ${cur.label}`} />

@@ -13,6 +13,8 @@ export const CLASSES: { cls: 10 | 20 | 30; n: string; desc: string }[] = [
   { cls: 20, n: 'Class 20', desc: '중부하 · 기동 약 20초 이내. 컨베이어, 믹서, 대형 팬처럼 기동이 긴 부하' },
   { cls: 30, n: 'Class 30', desc: '고부하 · 기동 약 30초 이내. 크러셔, 밀처럼 관성이 큰 부하' },
 ]
+/** 정격 여유 표시: 100%를 넘으면 '+100% 이상'으로 줄여 보여준다 */
+export const marginText = (pct: number) => (Math.round(pct) > 100 ? '+100% 이상' : `+${Math.round(pct)}%`)
 export const startsText = (s: number) => (s === 3 ? '3회 이하' : s === 5 ? '4~5회' : '6~10회')
 
 
@@ -24,7 +26,8 @@ export const CAT: Record<CatKey, { file: string; img: string; title: string; sub
 }
 
 // 엔진 계약(Recommendation)에 없는 표시용 속성 (시리즈 ID 기준)
-export const hasNA = (r: Recommendation) => !['lsfs-s', 'lsfs-b', 'lhvs'].includes(r.seriesId)
+export const hasNA = (r: Recommendation) =>
+  r.seriesId === 'ssh' ? r.model.startsWith('SSH-P') : !['lsfs-s', 'lsfs-b', 'lhvs'].includes(r.seriesId)
 export const hasDelta = (r: Recommendation) => r.seriesId === 'lvss' || r.seriesId === 'ssmi'
 
 export const Icon = {

@@ -147,7 +147,7 @@ describe('형명 조합기 (LSFS · LHVS · SSC/SSM)', () => {
   })
 })
 
-describe('조작전원 공통 입력', () => {
+describe('제어전원 공통 입력', () => {
   const m = (c: Conditions, id: string) => select(c).ok.find((o) => o.seriesId === id)?.model
   it('SSC·SSM: AC는 C1, DC24V는 C2', () => {
     expect(m({ ...base, control: 'AC110' }, 'ssce')).toMatch(/-C1$/)
@@ -165,14 +165,14 @@ describe('조작전원 공통 입력', () => {
     expect(m({ ...big, control: 'DC24' }, 'lvss')).toBeUndefined()
     const small = select({ ...base, control: 'DC24' }).ok.find((o) => o.seriesId === 'lvss')!
     expect(small.model).toBe('LS-LVSS-201')
-    expect(small.info.some((s) => s.includes('공통'))).toBe(true)
+    expect(small.info.some((s) => s.includes('모두 쓸 수'))).toBe(true)
   })
 })
 
 describe('옵션 선택 안 함 / AC380', () => {
   const m = (c: Conditions, id: string) => select(c).ok.find((o) => o.seriesId === id)?.model
   const none = { comm: '', disp: '', cable: '' } as const
-  it("조작전원 ''이면 SSC·SSM은 C?, LSFS·LVSS는 코드를 임의로 정하지 않는다", () => {
+  it("제어전원 ''이면 SSC·SSM은 C?, LSFS·LVSS는 코드를 임의로 정하지 않는다", () => {
     expect(m({ ...base, control: '' }, 'ssce')).toBe('SSCe-140-V4-C?')
     expect(m({ ...base, control: '' }, 'ssmi')).toMatch(/-V5-C\?$/)
     expect(m({ ...base, control: '', lsfs: none }, 'lsfs-s')).toBe('LSFS 3056 S')
@@ -217,13 +217,44 @@ describe('한 단계 위로 보기 / 고를 옵션 안내', () => {
     expect(b.model).toBe(a.model)
   })
   it('? 가 남은 옵션 이름을 알려 준다', () => {
-    expect(f({ ...base, control: '' }, 'ssce').pending).toEqual(['조작전원'])
+    expect(f({ ...base, control: '' }, 'ssce').pending).toEqual(['제어전원'])
     expect(f({ ...base, control: 'AC220' }, 'ssce').pending).toEqual([])
     const lsfs = f({ ...base, control: '', lsfs: { comm: 'C', disp: '1', cable: '' } }, 'lsfs-s')
-    expect(lsfs.pending).toEqual(['조작전원', 'Cable 길이'])
+    expect(lsfs.pending).toEqual(['제어전원', 'Cable 길이'])
     const mv: Conditions = { ...base, volt: 6600, cap: 100, unit: 'A', panel: '' }
     expect(f({ ...mv, ssh: { sc: 'SC25', e: '', f: '', l: '', b: '', pf: '' } }, 'ssh').pending)
       .toEqual(['판넬 타입', '판넬 구성', '고압 퓨즈', '입력측 보호', 'Bypass 장치', '역률보상(PFC)'])
     expect(f({ ...mv, panel: 'L', lhvs: { vcb: '2', vcs: '', meter: '' } }, 'lhvs').pending).toEqual(['VCS 차단용량', '계측기'])
+  })
+})
+
+describe('공개 전 점검 반영', () => {
+  const f = (c: Conditions, id: string) => select(c, { hidden: new Set(['lvss|LS-LVSS-307-1', 'lvss|LS-LVSS-309-1']) }).ok.find((o) => o.seriesId === id)
+  it('LSFS·LHVS·SSH는 옵션을 안 골라도 고를 항목을 알려 준다', () => {
+    const l = f({ ...base, control: '', lsfs: { comm: '', disp: '', cable: '' } }, 'lsfs-s')!
+    expect(l.pending).toEqual(['제어전원', '통신기능', '디스플레이'])
+    expect(l.info.some((s) => s.includes('설계팀 확인'))).toBe(true)
+  })
+  it('설계팀 확인 안내가 LSFS·LHVS·SSH에 항상 같은 문구로 뜬다', () => {
+    const mv: Conditions = { ...base, volt: 6600, cap: 100, unit: 'A' }
+    for (const id of ['lhvs', 'ssh']) expect(f(mv, id)!.info.some((s) => s.includes('가능한 조합인지 설계팀 확인'))).toBe(true)
+    expect(f(base, 'lsfs-s')!.info.some((s) => s.includes('가능한 조합인지 설계팀 확인'))).toBe(true)
+  })
+  it('SSH: UL 요구 시 판넬 P를 안내하고, 바이패스 필수 + E0/B0은 경고한다', () => {
+    const mv: Conditions = { ...base, volt: 6600, cap: 100, unit: 'A', na: true, panel: 'L' }
+    expect(f(mv, 'ssh')!.warn.some((w) => w.includes('판넬 타입 P'))).toBe(true)
+    const bp: Conditions = { ...mv, na: false, bp: true, ssh: { sc: '', e: 'E0', f: '', l: '', b: '', pf: '' } }
+    expect(f(bp, 'ssh')!.warn.some((w) => w.includes('E1~E3'))).toBe(true)
+  })
+  it('LVSS: AC110에서 단종(-1) 때문에 크기가 올라가면 이유를 알려 준다', () => {
+    const c: Conditions = { ...base, cap: 400, unit: 'A', control: 'AC110' }
+    const r = f(c, 'lvss')!
+    expect(r.model).toBe('LS-LVSS-401-1')
+    expect(r.info.some((s) => s.includes('판매하지 않아서'))).toBe(true)
+  })
+  it('고압(SSH·LHVS)도 기동 횟수 미반영 안내와 50°C 경고를 한다', () => {
+    const mv: Conditions = { ...base, volt: 6600, cap: 100, unit: 'A', starts: 10, amb: 50 }
+    for (const id of ['lhvs', 'ssh']) expect(f(mv, id)!.info.some((s) => s.includes('기동 횟수'))).toBe(true)
+    expect(f(mv, 'ssh')!.warn.some((w) => w.includes('50°C 이상'))).toBe(true)
   })
 })

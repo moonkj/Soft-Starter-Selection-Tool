@@ -1,5 +1,5 @@
 // 엔진(순수 함수)과 UI 사이의 계약. 양쪽 모두 이 파일만 기준으로 한다.
-/** 조작전원: AC110V / AC220V / AC380~440V(SSC만) / DC24V. 시리즈마다 형명 코드가 다르다(SSC·SSM C1/C2, LSFS 1/2, LVSS -1/-2 또는 공통). */
+/** 제어전원: AC110V / AC220V / AC380~440V(SSC만) / DC24V. 시리즈마다 형명 코드가 다르다(SSC·SSM C1/C2, LSFS 1/2, LVSS -1/-2 또는 공통). */
 export type ControlPower = 'AC110' | 'AC220' | 'AC380' | 'DC24'
 export type Unit = 'kW' | 'A'
 export type LoadKey = 'pump' | 'fan' | 'comp' | 'conv' | 'mixer' | 'crusher'
@@ -14,7 +14,7 @@ export interface Conditions {
   load?: LoadKey          // cls가 없을 때만 사용 (부하→Class 환산, 테스트용)
   amb: number            // 주위 온도 °C (40/45/50/55)
   starts: number         // 시간당 기동 횟수 대표값 (3 / 5 / 10)
-  control?: ControlPower | ''  // 조작전원 (SSC·SSM·LSFS·LVSS 공통 입력). '' = 선택 안 함(형명에 ?로 표시), undefined = 지정 없음(기존 동작)
+  control?: ControlPower | ''  // 제어전원 (SSC·SSM·LSFS·LVSS 공통 입력). '' = 선택 안 함(형명에 ?로 표시), undefined = 지정 없음(기존 동작)
   panel?: 'L' | 'M' | 'P' | ''  // SSH 판넬 타입 (''= 선택 안 함, undefined = L)
   lsfs?: LsfsOptions       // LSFS 형명 조합 옵션
   lhvs?: LhvsOptions       // LHVS 형명 조합 옵션

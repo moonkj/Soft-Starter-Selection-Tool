@@ -12,7 +12,7 @@ export default function Readout({ s, amp, formula }: { s: FormState; amp: number
   const count = (o: object) => Object.values(o).filter((x) => x !== '').length
   const picked = (s.volt < 2000 ? count(s.lsfs) : count(s.lhvs) + count(s.ssh) + (s.panel ? 1 : 0))
   return (
-    <section className="readout" aria-live="polite">
+    <section className="readout" aria-label="선정 기준 전류">
       <div>
         <div className="lbl">선정 기준 전류</div>
         <div className="amp">{amp > 0 ? <>{fmtA(amp)}<small>A</small></> : '—'}</div>
@@ -25,7 +25,8 @@ export default function Readout({ s, amp, formula }: { s: FormState; amp: number
           <Pick label="주위" v={s.amb === '' ? '' : s.amb === 40 ? '40°C 이하' : `${s.amb}°C`} />
           <Pick label="기동" v={s.starts === '' ? '' : `시간당 ${startsText(s.starts)}`} />
           <Pick label="결선" v={s.conn === 'delta' ? 'In-delta' : s.conn === 'line' ? 'In-line' : ''} />
-          {s.volt < 2000 && <Pick label="조작전원" v={CONTROL_TXT[s.control]} />}
+          {s.volt < 2000 && <Pick label="제어전원" v={CONTROL_TXT[s.control]} />}
+          <Pick label="필수 조건" v={[s.na && 'UL·cETL', s.bp && '바이패스', s.pr && '모터 보호'].filter(Boolean).join(' · ')} />
           <Pick label="형명 옵션" v={picked ? `${picked}개 선택` : ''} />
         </div>
         <div className="formula">{amp > 0 ? formula : ''}</div>

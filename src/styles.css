@@ -1,7 +1,7 @@
 /* Layout: 왼쪽 조건 패널(고정) + 오른쪽 추천 결과. 결과 위에 '계산된 모터 전류' 판독창, 아래에 비교표·견적·카탈로그 자료실 */
 :root{
-  --bg:#ffffff; --surface:#ffffff; --surface-2:#f5f7f9; --ink:#2e373d; --body:#666666; --muted:#6b7378; --line:#e3e6e9; --line-strong:#cfd4d8;
-  --accent:#1a6fd6; --accent-soft:#eaf3fd; --accent-ink:#ffffff; --brand:#388dee; --brand-red:#ed174b; --red-ink:#d3123f;
+  --bg:#ffffff; --surface:#ffffff; --surface-2:#f5f7f9; --ink:#2e373d; --body:#666666; --muted:#656c71; --line:#e3e6e9; --line-strong:#cfd4d8;
+  --accent:#1767c8; --accent-soft:#eaf3fd; --accent-ink:#ffffff; --brand:#388dee; --brand-red:#ed174b; --red-ink:#d3123f;
   --ok:#1d7347; --ok-soft:#e2f2e9; --warn:#8a4b00; --warn-soft:#fcf0dc; --bad:#b3102f; --bad-soft:#fdeaee;
   --readout:#2e373d; --readout-ink:#f2f6fa; --readout-dim:#a9b4bd;
   --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,sans-serif;

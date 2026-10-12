@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { Recommendation } from '../engine/types'
 import '../styles/results.css'
-import { CONTROL_TXT, fmtA, startsText, voltText } from './common'
+import { CONTROL_TXT, fmtA, marginText, startsText, voltText } from './common'
 import type { FormState } from './ConditionPanel'
 
 export default function QuoteBox({ s, amp, pick, toast }: {
@@ -20,24 +20,31 @@ export default function QuoteBox({ s, amp, pick, toast }: {
     s.starts !== '' && `시간당 기동 ${startsText(s.starts)}`,
     s.conn !== '' && `결선 ${s.conn === 'delta' ? 'In-delta' : 'In-line'}`,
   ].filter(Boolean) as string[]
-  const unfinished = pick.some((r) => r.model.includes('?'))
+  const unfinished = pick.some((r) => r.model.includes('?') || r.pending.length > 0)
   const empty = !(cap > 0) || !pick.length
   const text = [
-    '[Soft Starter 견적 문의]', '',
-    `회사명   : ${co || '-'}`, `담당자   : ${name || '-'}`, `이메일   : ${mail || '-'}`, `수량     : ${qty || 1}대`, '',
+    '[소프트스타터 선정 문의]',
+    '안녕하세요. 아래 조건으로 소프트스타터 선정과 견적을 문의드립니다.', '',
+    `회사명: ${co || '(미입력)'}`, `담당자: ${name || '(미입력)'}`, `이메일: ${mail || '(미입력)'}`, `수량: ${qty || 1}대`, '',
     '■ 사용 조건',
-    `- 전원 : ${voltText(s.volt, false)} / ${s.hz}Hz`,
-    `- 모터 : ${cap}${s.unit === 'A' ? 'A (모터 정격전류)' : s.unit}  → 선정 기준 ${amp > 0 ? fmtA(amp) : '-'}A`,
-    `- Trip Class : ${s.cls}`,
-    ...(detail.length ? [`- ${detail.join(', ')}`] : []),
-    ...(s.control ? [`- 조작전원 : ${CONTROL_TXT[s.control]}`] : []),
-    ...(req ? [`- 필수 : ${req}`] : []), '',
-    '■ 후보 모델',
+    `- 전원: ${voltText(s.volt, false)} · ${s.hz}Hz`,
+    `- 모터: ${cap}${s.unit === 'A' ? 'A (모터 정격전류)' : 'kW'}${amp > 0 ? ` (필요 전류 약 ${fmtA(amp)}A${s.unit === 'kW' ? ', 효율·역률 근사값으로 환산' : ''})` : ''}`,
+    `- Trip Class: ${s.cls}`,
+    ...(s.conn === 'delta' && pick[0] ? [`- In-delta(6선) 결선이라 기동기에는 모터 정격전류의 1/√3만 흘러요. 후보 정격은 ${fmtA(pick[0].need)}A 기준으로 골랐어요.`] : []),
+    ...(detail.length ? [`- ${detail.join(', ')}`] : ['- 상세 조건: 선택 안 함 (주위 40°C 이하, 시간당 3회 이하, In-line 기준으로 계산)']),
+    ...(s.control && s.volt < 2000 ? [`- 제어전원: ${CONTROL_TXT[s.control]}`] : []),
+    ...(req ? [`- 필수 조건: ${req}`] : []), '',
+    '■ 후보 형명',
     ...(pick.length
-      ? pick.map((r) => `- ${r.model}  (${r.line} ${r.seriesName}, 정격 ${r.ratedA}A, 정격 여유 +${Math.round(r.marginPct)}%)`)
-      : ['- 조건에 맞는 모델 없음 (기술 검토 요청)']), '',
-    ...(unfinished ? ['※ 형명의 ?는 아직 정하지 않은 옵션입니다. 확정 후 알려 주세요.', ''] : []),
-    '■ 요청 사항', memo || '-',
+      ? pick.flatMap((r) => [
+          `- ${r.model} (${r.line} ${r.seriesName}, 제품 정격 ${r.ratedA}A, 정격 여유 ${marginText(r.marginPct)})`,
+          ...(r.pending.length ? [`  ※ 아직 정하지 않은 옵션: ${r.pending.join(', ')}`] : []),
+          ...r.warn.map((w) => `  ※ 주의: ${w}`),
+          ...(Math.round(r.marginPct) < 5 ? ['  ※ 정격 여유가 5% 미만입니다. 한 단계 위 모델도 검토해 주세요.'] : []),
+        ])
+      : ['- 조건에 맞는 모델 없음 (기술상담 요청)']), '',
+    ...(unfinished ? ['※ 형명의 ?는 아직 정하지 않은 옵션입니다. 확정되면 알려 드리겠습니다.', ''] : []),
+    '■ 요청 사항', memo || '(없음)',
   ].join('\n')
 
   const copy = () => {
@@ -50,7 +57,7 @@ export default function QuoteBox({ s, amp, pick, toast }: {
         sel?.removeAllRanges()
         sel?.addRange(r)
       }
-      toast('내용을 선택해 뒀어요. Ctrl+C로 복사하세요.')
+      toast('내용을 선택해 뒀어요. 길게 눌러 복사하거나 Ctrl+C로 복사하세요.')
     }
     try {
       navigator.clipboard.writeText(text).then(() => toast('문의 내용을 복사했어요.'), fallback)
@@ -61,14 +68,14 @@ export default function QuoteBox({ s, amp, pick, toast }: {
 
   return (
     <div className="two quote">
-      <form className="box" autoComplete="off" onSubmit={(e) => e.preventDefault()}>
+      <form className="box" autoComplete="on" onSubmit={(e) => e.preventDefault()}>
         <h3>연락처</h3>
-        <div className="field"><label htmlFor="q-co">회사명</label><input type="text" id="q-co" placeholder="예: 한빛수처리" value={co} onChange={(e) => setCo(e.target.value)} /></div>
+        <div className="field"><label htmlFor="q-co">회사명</label><input type="text" id="q-co" autoComplete="organization" placeholder="예: 한빛수처리" value={co} onChange={(e) => setCo(e.target.value)} /></div>
         <div className="row">
-          <div className="field grow"><label htmlFor="q-name">담당자</label><input type="text" id="q-name" value={name} onChange={(e) => setName(e.target.value)} /></div>
+          <div className="field grow"><label htmlFor="q-name">담당자</label><input type="text" id="q-name" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} /></div>
           <div className="field" style={{ width: 96 }}><label htmlFor="q-qty">수량</label><input type="number" id="q-qty" min="1" className="num" value={qty} onChange={(e) => setQty(e.target.value)} /></div>
         </div>
-        <div className="field"><label htmlFor="q-mail">이메일</label><input type="email" id="q-mail" value={mail} onChange={(e) => setMail(e.target.value)} /></div>
+        <div className="field"><label htmlFor="q-mail">이메일</label><input type="email" id="q-mail" autoComplete="email" value={mail} onChange={(e) => setMail(e.target.value)} /></div>
         <div className="field" style={{ marginBottom: 0 }}><label htmlFor="q-memo">요청 사항</label><textarea id="q-memo" placeholder="납기, 판넬 구성, 통신 옵션 등" value={memo} onChange={(e) => setMemo(e.target.value)} /></div>
       </form>
       <div className="box">

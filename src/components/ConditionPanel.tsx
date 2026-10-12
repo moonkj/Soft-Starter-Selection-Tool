@@ -10,7 +10,7 @@ export interface FormState {
 const LSFS_OPTS: [keyof LsfsOptions, string, [string, string][]][] = [
   ['comm', '통신기능', [['0', '0 · 없음'], ['C', 'C · 포함']]],
   ['disp', '디스플레이', [['0', '0 · 기본형'], ['1', '1 · 분리형']]],
-  ['cable', 'Cable 길이 (분리형만)', [['0', '0m'], ['1', '1m'], ['2', '2m'], ['3', '3m']]],
+  ['cable', '케이블 길이 (분리형일 때만)', [['0', '0m'], ['1', '1m'], ['2', '2m'], ['3', '3m']]],
 ]
 const LHVS_OPTS: [keyof LhvsOptions, string, [string, string][]][] = [
   ['vcb', 'VCB 차단용량', [['1', '1 · 12.5kA'], ['2', '2 · 25kA'], ['4', '4 · 40kA']]],
@@ -41,21 +41,28 @@ function OptGroup({ title, show, rows, check }: { title: string; show: boolean; 
 
 const SSH_OPTS: [keyof SshOptions, string, [string, string][]][] = [
   ['sc', '단락 용량', [['SC07', 'SC07 · 7kA'], ['SC16', 'SC16 · 16kA'], ['SC20', 'SC20 · 20kA'], ['SC25', 'SC25 · 25kA'], ['SC31', 'SC31 · 31.5kA'], ['SC40', 'SC40 · 40kA'], ['SC50', 'SC50 · 50kA']]],
-  ['e', '판넬 구성', [['E0', 'E0 · 소프트스타터만'], ['E1', 'E1 · + Bypass'], ['E2', 'E2 · + 입력측 + Bypass'], ['E3', 'E3 · + 단로기 + 입력측 + Bypass']]],
+  ['e', '판넬 구성', [['E0', 'E0 · 소프트스타터만 설치'], ['E1', 'E1 · 소프트스타터 + 바이패스'], ['E2', 'E2 · 소프트스타터 + 입력측 + 바이패스'], ['E3', 'E3 · 소프트스타터 + 단로기 + 입력측 + 바이패스']]],
   ['f', '고압 퓨즈', [['F0', 'F0 · 없음'], ['F1', 'F1 · 설치']]],
-  ['l', '입력측 보호', [['L0', 'L0 · 없음'], ['L1', 'L1 · VC 고정형'], ['L2', 'L2 · VC 인출형'], ['L3', 'L3 · VCB 고정형'], ['L4', 'L4 · VCB 인출형']]],
-  ['b', 'Bypass 장치', [['B0', 'B0 · 없음'], ['B1', 'B1 · VC 고정형'], ['B2', 'B2 · VC 인출형'], ['B3', 'B3 · VCB 고정형'], ['B4', 'B4 · VCB 인출형']]],
+  ['l', '입력측 보호', [['L0', 'L0 · 없음'], ['L1', 'L1 · 진공접촉기(VC) 고정형'], ['L2', 'L2 · 진공접촉기(VC) 인출형'], ['L3', 'L3 · 진공차단기(VCB) 고정형'], ['L4', 'L4 · 진공차단기(VCB) 인출형']]],
+  ['b', '바이패스 장치', [['B0', 'B0 · 없음'], ['B1', 'B1 · 진공접촉기(VC) 고정형'], ['B2', 'B2 · 진공접촉기(VC) 인출형'], ['B3', 'B3 · 진공차단기(VCB) 고정형'], ['B4', 'B4 · 진공차단기(VCB) 인출형']]],
   ['pf', '역률보상(PFC)', [['PF0', 'PF0 · 없음'], ['PF1', 'PF1 · 있음']]],
 ]
 
 const LOW = [220, 230, 380, 400, 415, 440, 460, 480, 575, 600, 690]
 const HIGH: [number, string][] = [[2300, '2.3 kV'], [3300, '3.3 kV'], [4160, '4.16 kV'], [6600, '6.6 kV'], [11000, '11 kV'], [13800, '13.8 kV']]
 
-export default function ConditionPanel({ s, set }: { s: FormState; set: (p: Partial<FormState>) => void }) {
+/** 모터 용량 허용 범위. 이 밖이면 결과를 만들지 않고 안내만 보여준다. */
+export const CAP_MAX = 100000
+
+export default function ConditionPanel({ s, set, onReset }: { s: FormState; set: (p: Partial<FormState>) => void; onReset?: () => void }) {
+  const capBad = s.cap !== '' && !(+s.cap > 0 && +s.cap <= CAP_MAX)
   const desc = CLASSES.find((x) => x.cls === s.cls)?.desc
   return (
-    <form className="panel" autoComplete="off" onSubmit={(e) => e.preventDefault()}>
-      <h2>사용 조건</h2>
+    <form className="panel" autoComplete="off" aria-label="사용 조건" onSubmit={(e) => e.preventDefault()}>
+      <div className="panel-top">
+        <h2>사용 조건</h2>
+        {onReset && <button type="button" className="linkbtn" onClick={onReset}>조건 초기화</button>}
+      </div>
       <p className="sub">전압과 용량만 넣어도 추천이 나와요. 예시로 380V 55kW가 들어 있어요.</p>
 
       <div className="field">
@@ -77,12 +84,14 @@ export default function ConditionPanel({ s, set }: { s: FormState; set: (p: Part
         <label htmlFor="cap" className="req">모터 용량</label>
         <div className="row">
           <input type="number" id="cap" className="grow num" min="0" step="any" inputMode="decimal"
-            value={s.cap} onChange={(e) => set({ cap: e.target.value })} />
+            aria-invalid={capBad} aria-describedby="cap-hint"
+            value={s.cap} onChange={(e) => set({ cap: e.target.value })} onWheel={(e) => e.currentTarget.blur()} />
           <select id="unit" className="unit" value={s.unit} onChange={(e) => set({ unit: e.target.value as Unit })}>
             <option value="kW">kW</option><option value="A">A (모터 정격전류)</option>
           </select>
         </div>
-        <span className="hint">{s.unit === 'A' ? '모터 명판의 정격전류를 그대로 써요.' : '모터 명판의 정격전류(A)를 알면 A로 넣는 게 가장 정확해요. kW는 일반 효율로 환산해서 카탈로그 kW표와 다를 수 있어요.'}</span>
+        {capBad && <span className="field-err" role="alert">0보다 크고 {CAP_MAX.toLocaleString()} 이하인 값을 넣어 주세요.</span>}
+        <span className="hint" id="cap-hint">{s.unit === 'A' ? '모터 명판의 정격전류를 그대로 써요.' : '모터 명판의 정격전류(A)를 알면 A로 넣는 게 가장 정확해요. kW는 일반 효율로 환산해서 카탈로그 kW표와 다를 수 있어요.'}</span>
       </div>
 
       <div className="field">
@@ -98,26 +107,26 @@ export default function ConditionPanel({ s, set }: { s: FormState; set: (p: Part
       <details className="more">
         <summary>상세 조건</summary>
         <div className="inner">
-          <p className="hint" style={{ margin: '0 0 12px' }}>고르지 않은 조건(-)은 반영하지 않아요. 계산은 40°C 이하, 시간당 3회 이하, In-line 기준이에요.</p>
+          <p className="hint" style={{ margin: '0 0 12px' }}>고르지 않으면 주위 40°C 이하, 시간당 3회 이하, In-line 기준으로 계산하고 경고는 띄우지 않아요.</p>
           <div className="field">
             <label htmlFor="amb">주위 온도</label>
             <select id="amb" value={s.amb} onChange={(e) => set({ amb: e.target.value === '' ? '' : +e.target.value })}>
-              <option value="">-</option><option value={40}>40°C 이하</option><option value={45}>45°C</option><option value={50}>50°C</option><option value={55}>55°C</option>
+              <option value="">선택 안 함</option><option value={40}>40°C 이하</option><option value={45}>45°C까지</option><option value={50}>50°C까지</option><option value={55}>55°C까지</option>
             </select>
           </div>
           <div className="field">
             <label htmlFor="starts">시간당 기동 횟수</label>
             <select id="starts" value={s.starts} onChange={(e) => set({ starts: e.target.value === '' ? '' : +e.target.value })}>
-              <option value="">-</option><option value={3}>3회 이하</option><option value={5}>4~5회</option><option value={10}>6~10회</option>
+              <option value="">선택 안 함</option><option value={3}>3회 이하</option><option value={5}>4~5회</option><option value={10}>6~10회</option>
             </select>
           </div>
           {s.volt < 2000 && (
             <div className="field">
-              <label htmlFor="control">조작전원</label>
+              <label htmlFor="control">제어전원</label>
               <select id="control" value={s.control} onChange={(e) => set({ control: e.target.value as ControlPower | '' })}>
                 <option value="">선택 안 함</option><option value="AC110">AC110V</option><option value="AC220">AC220V</option><option value="AC380">AC380~440V (SSC만)</option><option value="DC24">DC24V</option>
               </select>
-              <span className="hint">고르지 않아도 돼요. SSC·SSM·LSFS·LVSS에 적용돼요. 시리즈마다 형명 코드가 달라요(C1/C2, 1/2, -1/-2). LVSS 101~305는 세 가지 공통이에요.</span>
+              <span className="hint">고르지 않아도 돼요. 고르면 형명의 제어전원 코드가 정해져요(SSC·SSM: C1/C2, LSFS: 1/2, LVSS 307 이후: -1/-2). LVSS 101~305는 DC24V·AC110V·AC220V를 모두 쓸 수 있어요.</span>
             </div>
           )}
           <OptGroup title="LSFS 형명 옵션" show={s.volt < 2000} check
@@ -130,7 +139,7 @@ export default function ConditionPanel({ s, set }: { s: FormState; set: (p: Part
           <div className="field">
             <label htmlFor="conn">결선 방식</label>
             <select id="conn" value={s.conn} onChange={(e) => set({ conn: e.target.value as 'line' | 'delta' | '' })}>
-              <option value="">-</option><option value="line">In-line (일반 3선)</option><option value="delta">In-delta (6선)</option>
+              <option value="">선택 안 함</option><option value="line">In-line (일반 3선)</option><option value="delta">In-delta (6선)</option>
             </select>
           </div>
           <div className="field checks">
