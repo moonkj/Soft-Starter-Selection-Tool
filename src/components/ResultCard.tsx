@@ -2,11 +2,17 @@ import type { Recommendation } from '../engine/types'
 import '../styles/results.css'
 import { Icon, asset, fmtA, hasNA } from './common'
 
+/** 마지막 글자에 받침이 있으면 '을', 없으면 '를' (한글이 아니면 '를') */
+function eulReul(w: string) {
+  const c = w.charCodeAt(w.length - 1)
+  return c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 !== 0 ? '을' : '를'
+}
+
 const SPEC_KEYS = ['바이패스', '모터 보호', '인증', '조작']
 
-export default function ResultCard({ r, best, inCmp, onCat, onCmp }: {
+export default function ResultCard({ r, best, inCmp, onCat, onCmp, onStep }: {
   r: Recommendation; best: boolean; inCmp: boolean
-  onCat: () => void; onCmp: () => void
+  onCat: () => void; onCmp: () => void; onStep: (delta: number) => void
 }) {
   const pct = Math.round(r.marginPct)
   const fill = Math.min(100, (r.need / r.ratedA) * 100)
@@ -21,7 +27,7 @@ export default function ResultCard({ r, best, inCmp, onCat, onCmp }: {
           </div>
           <div className="series">{r.line} · {r.seriesName}</div>
           <div className={'model' + (r.model.length > 18 ? ' long' : '')}>{r.model}</div>
-          {r.model.includes('?') && <div className="qhint"><b>?</b> 아직 고르지 않은 옵션이에요. 상세 조건에서 선택하면 형명이 완성돼요.</div>}
+          {r.model.includes('?') && <div className="qhint"><b>?</b> 아직 고르지 않은 옵션이에요.{r.pending.length ? <> 상세 조건에서 <b className="qlist">{r.pending.join(', ')}</b>{eulReul(r.pending[r.pending.length - 1])} 고르면 형명이 완성돼요.</> : ' 상세 조건에서 선택하면 형명이 완성돼요.'}</div>}
           <div className="pos">{r.positioning}</div>
         </div>
       </div>
@@ -33,9 +39,15 @@ export default function ResultCard({ r, best, inCmp, onCat, onCmp }: {
         <div className="bar" title="정격 대비 사용률"><i style={{ width: fill + '%' }} /></div>
         <div className="hint" style={{ marginTop: 5 }}>{r.cond}</div>
       </div>
-      {r.next && <div className="alt">한 단계 위: <b>{r.next.model}</b> ({r.next.ratedA} A)</div>}
+      {r.step > 0 && <div className="stepbar">한 단계 위 모델을 보고 있어요.<button type="button" className="linkbtn" onClick={() => onStep(-1)}>원래 모델로</button></div>}
+      {r.next && (
+        <div className="alt">
+          <span>한 단계 위: <b>{r.next.model}</b> ({r.next.ratedA} A)</span>
+          <button type="button" className="linkbtn" onClick={() => onStep(1)}>이 모델로 보기</button>
+        </div>
+      )}
       <div className="notes">
-        {r.marginPct < 5 && <div className="note">정격 여유가 5% 미만이에요. 한 단계 위 모델도 같이 검토해 주세요.</div>}
+        {r.marginPct < 5 && <div className="note">정격 여유가 5% 미만이에요. {r.next ? <>한 단계 위 모델(<b>{r.next.model}</b>)로 바꿔 보거나 비교에 담아 확인해 보세요. <button type="button" className="linkbtn" onClick={() => onStep(1)}>한 단계 위로 보기</button></> : '더 큰 모델이 없어서 기술 확인이 필요해요.'}</div>}
         {r.warn.map((w, i) => <div className="note" key={'w' + i}>{w}</div>)}
         {r.info.map((w, i) => <div className="note info" key={'i' + i}>{w}</div>)}
       </div>

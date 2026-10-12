@@ -18,6 +18,7 @@ export interface Conditions {
   panel?: 'L' | 'M' | 'P' | ''  // SSH 판넬 타입 (''= 선택 안 함, undefined = L)
   lsfs?: LsfsOptions       // LSFS 형명 조합 옵션
   lhvs?: LhvsOptions       // LHVS 형명 조합 옵션
+  steps?: Record<string, number>  // 시리즈별 '한 단계 위로 보기' 횟수 (없으면 0)
   ssh?: SshOptions         // SSH 형명 조합 옵션 (없으면 옵션 없는 짧은 형명)
   conn: 'line' | 'delta'
   na: boolean            // UL/cETL 필수
@@ -39,6 +40,8 @@ export interface Recommendation {
   need: number           // 이 시리즈에서 쓴 기준 전류 (In-delta면 모터 정격전류/√3)
   cond: string           // 정격 조건 문구
   next: { model: string; ratedA: number } | null
+  step: number           // 0 = 가장 근접 모델, 1 이상 = 한 단계 위로 올려 본 모델
+  pending: string[]      // 형명에 ?로 남은 옵션 이름 (상세 조건에서 고를 항목)
   warn: string[]
   info: string[]
   spec: Record<string, string>   // 주요 사양 줄

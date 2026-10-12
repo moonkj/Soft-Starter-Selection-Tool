@@ -9,9 +9,10 @@ type Eval =
   | { x: string }
   | { item: Item; next: Item | null; cond: string; warn: string[]; info: string[]; need: number; pages?: CatalogPage[] }
 
-function pickFrom(list: Item[], need: number) {
-  const i = list.findIndex((m) => m.a >= need)
-  return i < 0 ? null : { m: list[i], next: list[i + 1] ?? null }
+function pickFrom(list: Item[], need: number, step = 0) {
+  const base = list.findIndex((m) => m.a >= need)
+  const i = base < 0 ? -1 : base + step
+  return i < 0 || i >= list.length ? null : { m: list[i], next: list[i + 1] ?? null }
 }
 
 const rated = (m: CatalogModel, key: string): number | null => m.ratings[key] ?? null
@@ -22,6 +23,7 @@ interface Ctx { hidden: ReadonlySet<string>; I: number; v: number; cls: 10 | 20 
 
 function evaluate(id: string, ctx: Ctx): Eval {
   const { I, v, cls, amb, starts, delta, c, hidden } = ctx
+  const step = c.steps?.[id] ?? 0
   // 숨김(단종) 모델은 목록에서 빠지므로 pickFrom이 자연스럽게 다음 노출 모델을 고르고, next도 노출 모델만 가리킨다.
   const modelsOf = (sid: string): CatalogModel[] => allModelsOf(sid).filter((m) => !hidden.has(modelKey(m)))
   if (hidden.size && modelsOf(id).length === 0) return { x: SOLD_OUT }
@@ -86,7 +88,7 @@ function evaluate(id: string, ctx: Ctx): Eval {
       .filter((m) => m.code.startsWith(`LSFS ${d}`))
       .sort((a, b) => a.motor_kw! - b.motor_kw!)
       .map((m) => ({ code: lsfsCode(m.code), a: m.ratings.rated_A as number, kw: m.motor_kw }))
-    const res = pickFrom(list, need)
+    const res = pickFrom(list, need, step)
     if (!res) return { x: maxMsg(list) }
     info.push(DESIGN_CHECK)
     const cond = `${d === '2' ? '220V' : d === '3' ? '380V' : '440V'}급 · 적용 ${res.m.kw}kW`
@@ -106,7 +108,7 @@ function evaluate(id: string, ctx: Ctx): Eval {
     const list: Item[] = modelsOf(id)
       .filter((m) => m.code.startsWith(`LHVS ${d} `))
       .map((m) => ({ code: lhvsCode(m.code), a: m.ratings.rated_A as number, kw: m.motor_kw }))
-    const res = pickFrom(list, need)
+    const res = pickFrom(list, need, step)
     if (!res) return { x: maxMsg(list) }
     if (amb > 50) warn.push('LHVS 사용 주위온도는 -10~+50°C예요. 그보다 높으면 기술 확인이 필요해요.')
     info.push(c.lhvs && !allEmpty(c.lhvs) ? DESIGN_CHECK : 'VCB·VCS 차단용량, 계측기 옵션은 별도로 정해야 해요.')
@@ -125,7 +127,7 @@ function evaluate(id: string, ctx: Ctx): Eval {
     // 형명: SSH-{판넬}-{용량}-{전압}[-SC-E-F-L-B-PF]. 모델 행은 용량 단위, 나머지는 조건으로 조합한다.
     const list: Item[] = modelsOf(id)
       .map((m) => ({ a: m.ratings.scr_A as number, code: `SSH-${panel === '' ? '?' : panel}-${m.code.slice(4)}-${vv[1]}${sfx}`, model: m }))
-    const res = pickFrom(list, need)
+    const res = pickFrom(list, need, step)
     if (!res) return { x: maxMsg(list) }
     if (amb > 50) warn.push('SSH는 주위온도 50°C 이상에서 용량 저감이 필요해요. (카탈로그 23쪽) 기술 확인이 필요해요.')
     info.push(picked ? DESIGN_CHECK : '단락용량(SC), 판넬 구성(E), 퓨즈·입력측 보호·바이패스·PFC는 옵션 코드로 따로 정해요.')
@@ -152,7 +154,7 @@ function evaluate(id: string, ctx: Ctx): Eval {
       return acc
     }, [])
     if (c.bp) list = list.filter((m) => m.model!.bypass)
-    const res = pickFrom(list, need)
+    const res = pickFrom(list, need, step)
     if (!res) return { x: maxMsg(list, (c.bp ? ', 바이패스 내장 기준' : '') + (control === 'DC24' ? ', DC24V 조작전원은 LVSS 101~305만 해당' : '')) }
     const m = res.m.model!
     const f = m.frame!
@@ -191,7 +193,7 @@ function evaluate(id: string, ctx: Ctx): Eval {
       code: `${m.code}-${v <= 440 ? 'V4' : 'V6'}-${ctrl}`,
       a: m.ratings[key] as number,
     }))
-    const res = pickFrom(list, need)
+    const res = pickFrom(list, need, step)
     if (!res) return { x: maxMsg(list) }
     if (cls === 30) warn.push('크러셔급 고부하는 Heavy Duty 기준으로 골랐어요. 기동 조건은 기술 검토가 필요해요.')
     if (starts > 3) info.push(NO_STARTS)
@@ -211,7 +213,7 @@ function evaluate(id: string, ctx: Ctx): Eval {
       code: `${m.code}-${v <= 525 ? 'V5' : 'V7'}-${ctrl}`,
       a: m.ratings[key] as number,
     }))
-    const res = pickFrom(list, need)
+    const res = pickFrom(list, need, step)
     if (!res) return { x: maxMsg(list) }
     if (amb > 40) warn.push(`정격은 40°C 기준이에요. 주위 ${amb}°C면 derating 확인이 필요해요.`)
     if (cls === 30) warn.push('크러셔급 고부하는 Heavy Duty 기준으로 골랐어요. 기동 조건은 기술 검토가 필요해요.')
@@ -221,6 +223,42 @@ function evaluate(id: string, ctx: Ctx): Eval {
   }
 
   return { x: '데이터 없음' }
+}
+
+/** 형명에 ?로 남은 옵션이 무엇인지: 상세 조건에서 고를 항목 이름 */
+function pendingOf(id: string, code: string, c: Conditions): string[] {
+  if (!code.includes('?')) return []
+  const out: string[] = []
+  if (id === 'ssce' || id === 'ssci' || id === 'ssme' || id === 'ssmi') {
+    if (c.control === '') out.push('조작전원')
+  } else if (id === 'lsfs-s' || id === 'lsfs-b') {
+    const o = c.lsfs
+    if (c.control === '') out.push('조작전원')
+    if (o) {
+      if (o.comm === '') out.push('통신기능')
+      if (o.disp === '') out.push('디스플레이')
+      if (o.disp === '1' && o.cable === '') out.push('Cable 길이')
+    }
+  } else if (id === 'lhvs') {
+    const o = c.lhvs
+    if (o) {
+      if (o.vcb === '') out.push('VCB 차단용량')
+      if (o.vcs === '') out.push('VCS 차단용량')
+      if (o.meter === '') out.push('계측기')
+    }
+  } else if (id === 'ssh') {
+    const o = c.ssh
+    if (c.panel === '') out.push('판넬 타입')
+    if (o) {
+      if (o.sc === '') out.push('단락 용량')
+      if (o.e === '') out.push('판넬 구성')
+      if (o.f === '') out.push('고압 퓨즈')
+      if (o.l === '') out.push('입력측 보호')
+      if (o.b === '') out.push('Bypass 장치')
+      if (o.pf === '') out.push('역률보상(PFC)')
+    }
+  }
+  return out
 }
 
 const NO_HIDDEN: ReadonlySet<string> = new Set()
@@ -244,6 +282,8 @@ export function select(c: Conditions, opts?: SelectOptions): SelectResult {
       continue
     }
     ok.push({
+      step: c.steps?.[id] ?? 0,
+      pending: pendingOf(id, r.item.code, c),
       seriesId: id,
       seriesName: s.name,
       line: meta.line,

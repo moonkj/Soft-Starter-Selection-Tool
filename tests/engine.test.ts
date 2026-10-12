@@ -194,3 +194,36 @@ describe('옵션 선택 안 함 / AC380', () => {
     expect(r.ok.some((o) => ['ssme', 'ssmi', 'lvss', 'lsfs-s'].includes(o.seriesId))).toBe(false)
   })
 })
+
+describe('한 단계 위로 보기 / 고를 옵션 안내', () => {
+  const f = (c: Conditions, id: string) => select(c).ok.find((o) => o.seriesId === id)!
+  it('steps로 한 단계 위 모델을 실제 선정 결과로 볼 수 있다 (경고·정격 포함)', () => {
+    const a = f(base, 'ssce')
+    const up = f({ ...base, steps: { ssce: 1 } }, 'ssce')
+    expect(a.step).toBe(0)
+    expect(up.step).toBe(1)
+    expect(up.model).toBe(a.next!.model)
+    expect(up.ratedA).toBe(a.next!.ratedA)
+    expect(up.marginPct).toBeGreaterThan(a.marginPct)
+    expect(f({ ...base, steps: { ssce: 2 } }, 'ssce').model).not.toBe(up.model)
+  })
+  it('목록 끝을 넘으면 그 시리즈는 정격 초과로 제외된다', () => {
+    const r = select({ ...base, steps: { ssce: 99 } })
+    expect(r.ok.some((o) => o.seriesId === 'ssce')).toBe(false)
+  })
+  it('다른 시리즈에는 영향이 없다', () => {
+    const a = f(base, 'lvss')
+    const b = f({ ...base, steps: { ssce: 1 } }, 'lvss')
+    expect(b.model).toBe(a.model)
+  })
+  it('? 가 남은 옵션 이름을 알려 준다', () => {
+    expect(f({ ...base, control: '' }, 'ssce').pending).toEqual(['조작전원'])
+    expect(f({ ...base, control: 'AC220' }, 'ssce').pending).toEqual([])
+    const lsfs = f({ ...base, control: '', lsfs: { comm: 'C', disp: '1', cable: '' } }, 'lsfs-s')
+    expect(lsfs.pending).toEqual(['조작전원', 'Cable 길이'])
+    const mv: Conditions = { ...base, volt: 6600, cap: 100, unit: 'A', panel: '' }
+    expect(f({ ...mv, ssh: { sc: 'SC25', e: '', f: '', l: '', b: '', pf: '' } }, 'ssh').pending)
+      .toEqual(['판넬 타입', '판넬 구성', '고압 퓨즈', '입력측 보호', 'Bypass 장치', '역률보상(PFC)'])
+    expect(f({ ...mv, panel: 'L', lhvs: { vcb: '2', vcs: '', meter: '' } }, 'lhvs').pending).toEqual(['VCS 차단용량', '계측기'])
+  })
+})

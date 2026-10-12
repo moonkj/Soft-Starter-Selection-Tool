@@ -117,3 +117,10 @@ dialog.cat-dlg::backdrop{background:rgba(15,21,27,.65)}
 /* 형명의 ? 안내 */
 .cards .qhint{margin-top:6px;font-size:12.5px;line-height:1.45;color:var(--muted)}
 .cards .qhint b{display:inline-block;min-width:18px;text-align:center;margin-right:4px;padding:0 4px;border-radius:2px;background:var(--accent-soft);color:var(--accent);font-family:var(--mono)}
+
+/* 한 단계 위로 보기 */
+.cards .alt{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px}
+.cards .stepbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;margin:0 16px 8px;padding:7px 10px;border-left:3px solid var(--accent);background:var(--accent-soft);color:var(--ink);font-size:13px}
+.cards .linkbtn{border:0;background:none;padding:0;color:var(--accent);font:inherit;font-weight:600;text-decoration:underline;text-underline-offset:2px;cursor:pointer;min-height:24px}
+.cards .linkbtn:hover{text-decoration-thickness:2px}
+.cards .qhint .qlist{display:inline;background:none;min-width:0;padding:0;margin:0;color:var(--ink);font-family:inherit;font-weight:700}

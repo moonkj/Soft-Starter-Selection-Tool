@@ -1,7 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { fetchPublished, readDraft } from './config/visibility'
 import { select } from './engine/select'
-import { LHVS_DEFAULTS, LSFS_DEFAULTS, SSH_DEFAULTS, type Conditions, type SelectResult } from './engine/types'
+import { LHVS_DEFAULTS, LSFS_DEFAULTS, SSH_DEFAULTS, type Conditions, type Recommendation, type SelectResult } from './engine/types'
 import ConditionPanel, { type FormState } from './components/ConditionPanel'
 import Readout from './components/Readout'
 import ResultCard from './components/ResultCard'
@@ -34,7 +34,10 @@ export default function App() {
   const [f, setF] = useState<FormState>({
     volt: 380, hz: 60, cap: '55', unit: 'kW', cls: 10, control: '', panel: '', ssh: SSH_DEFAULTS, lsfs: LSFS_DEFAULTS, lhvs: LHVS_DEFAULTS, amb: '', starts: '', conn: '', na: false, bp: false, pr: false,
   })
-  const [cmp, setCmp] = useState<string[]>([])
+  // 한 단계 위로 올려 보는 시리즈 (시리즈ID -> 단계). 입력 조건이 바뀌면 처음으로 돌린다.
+  const [steps, setSteps] = useState<Record<string, number>>({})
+  // 비교에 담은 모델은 그 시점의 결과를 복사해 둔다. 조건이 바뀌면 숨기고, 조건이 돌아오면 다시 보여준다.
+  const [cmp, setCmp] = useState<{ sig: string; r: Recommendation }[]>([])
   const [catId, setCatId] = useState<string | null>(null)
   const [toastMsg, setToastMsg] = useState('')
   const tt = useRef<number | undefined>(undefined)
@@ -47,28 +50,37 @@ export default function App() {
   }, [])
 
   const capNum = +f.cap || 0
-  const res: SelectResult = useMemo(() => {
-    if (!(capNum > 0)) return EMPTY
-    const c: Conditions = {
+  const baseKey = `${f.volt}|${f.hz}|${f.cap}|${f.unit}|${f.cls}`
+  useEffect(() => { setSteps({}) }, [baseKey])
+  const cond = useMemo<Conditions>(() => ({
       volt: f.volt, hz: f.hz, cap: capNum, unit: f.unit, cls: f.cls, control: f.control, panel: f.panel, ssh: f.ssh, lsfs: f.lsfs, lhvs: f.lhvs,
       // 고르지 않은 조건(-)은 기준 조건(40°C 이하, 3회 이하, In-line)으로 계산하되 경고·제외는 하지 않는다
       amb: f.amb === '' ? 40 : f.amb, starts: f.starts === '' ? 3 : f.starts, conn: f.conn === 'delta' ? 'delta' : 'line', na: f.na, bp: f.bp, pr: f.pr,
-    }
-    return select(c, { hidden })
-  }, [f, capNum, hidden])
+  }), [f, capNum])
+  const sig = useMemo(() => JSON.stringify(cond) + '|' + hidden.size, [cond, hidden])
+  const res: SelectResult = useMemo(() => {
+    if (!(capNum > 0)) return EMPTY
+    const r = select({ ...cond, steps }, { hidden })
+    // 올려 본 결과 목록 끝을 넘어 사라진 시리즈는 단계를 되돌려서 다시 계산한다
+    const lost = Object.keys(steps).filter((id) => steps[id] > 0 && !r.ok.some((o) => o.seriesId === id))
+    if (!lost.length) return r
+    const back = { ...steps }
+    lost.forEach((id) => delete back[id])
+    return select({ ...cond, steps: back }, { hidden })
+  }, [cond, steps, capNum, hidden])
 
   const empty = !(capNum > 0) || !(res.amp > 0)
-  // 더 이상 맞지 않는 시리즈는 비교에서 뺀다
-  const selCmp = res.ok.filter((r) => cmp.includes(r.seriesId))
+  const selCmp = cmp.filter((x) => x.sig === sig).map((x) => x.r)
+  const inCmp = (r: Recommendation) => selCmp.some((x) => x.seriesId === r.seriesId && x.model === r.model)
   const pick = selCmp.length ? selCmp : res.ok.slice(0, 1)
   const catRec = catId ? res.ok.find((r) => r.seriesId === catId) ?? null : null
 
-  const toggleCmp = (id: string) => {
-    const ids = selCmp.map((r) => r.seriesId)
-    if (ids.includes(id)) { setCmp(ids.filter((x) => x !== id)); return }
-    if (ids.length >= 4) { toast('비교는 4개까지 담을 수 있어요.'); return }
-    setCmp([...ids, id])
+  const toggleCmp = (r: Recommendation) => {
+    if (inCmp(r)) { setCmp(cmp.filter((x) => !(x.sig === sig && x.r.seriesId === r.seriesId && x.r.model === r.model))); return }
+    if (selCmp.length >= 4) { toast('비교는 4개까지 담을 수 있어요.'); return }
+    setCmp([...cmp.filter((x) => x.sig === sig), { sig, r }])
   }
+  const stepBy = (id: string, d: number) => setSteps((o) => ({ ...o, [id]: Math.max(0, (o[id] ?? 0) + d) }))
 
   if (admin && Admin) {
     return (
@@ -109,8 +121,8 @@ export default function App() {
               ) : res.ok.length ? (
                 res.ok.map((r, i) => (
                   <ResultCard key={r.seriesId} r={r} best={i === 0}
-                    inCmp={selCmp.some((x) => x.seriesId === r.seriesId)}
-                    onCat={() => setCatId(r.seriesId)} onCmp={() => toggleCmp(r.seriesId)} />
+                    inCmp={inCmp(r)} onStep={(d) => stepBy(r.seriesId, d)}
+                    onCat={() => setCatId(r.seriesId)} onCmp={() => toggleCmp(r)} />
                 ))
               ) : (
                 <div className="empty">조건에 맞는 제품이 없어요. 아래 제외 사유를 보고 조건을 조정하거나 기술상담으로 문의해 주세요.</div>

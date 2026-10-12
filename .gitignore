@@ -10,3 +10,4 @@ catalogs/
 prototype/
 .claude/
 data/catalog_models.csv
+tests/persona-*.test.ts
