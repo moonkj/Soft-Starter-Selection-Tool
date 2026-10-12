@@ -28,7 +28,7 @@ export default function QuoteBox({ s, amp, pick, toast }: {
     `회사명: ${co || '(미입력)'}`, `담당자: ${name || '(미입력)'}`, `이메일: ${mail || '(미입력)'}`, `수량: ${qty || 1}대`, '',
     '■ 사용 조건',
     `- 전원: ${voltText(s.volt, false)} · ${s.hz}Hz`,
-    `- 모터: ${cap}${s.unit === 'A' ? 'A (모터 정격전류)' : 'kW'}${amp > 0 ? ` (필요 전류 약 ${fmtA(amp)}A${s.unit === 'kW' ? ', 효율·역률 근사값으로 환산' : ''})` : ''}`,
+    `- 모터: ${s.unit === 'A' ? `명판 정격전류 ${cap}A` : `${cap}kW (명판 전류 미확인, 일반 효율·역률로 환산한 약 ${amp > 0 ? fmtA(amp) : '-'}A)`}`,
     `- Trip Class: ${s.cls}`,
     ...(s.conn === 'delta' && pick[0] ? [`- In-delta(6선) 결선이라 기동기에는 모터 정격전류의 1/√3만 흘러요. 후보 정격은 ${fmtA(pick[0].need)}A 기준으로 골랐어요.`] : []),
     ...(detail.length ? [`- ${detail.join(', ')}`] : ['- 상세 조건: 선택 안 함 (주위 40°C 이하, 시간당 3회 이하, In-line 기준으로 계산)']),
@@ -83,7 +83,7 @@ export default function QuoteBox({ s, amp, pick, toast }: {
         <pre className="quote" id="q-out">{text}</pre>
         <div style={{ display: 'flex', gap: 8, marginTop: 10, flexWrap: 'wrap' }}>
           <button type="button" className="btn primary" onClick={copy} disabled={empty}>문의 내용 복사</button>
-          <span className="hint" style={{ alignSelf: 'center' }}>{empty ? '모터 용량을 넣고 추천 모델이 나오면 복사할 수 있어요.' : '비교에 담은 모델이 있으면 그 모델로, 없으면 추천 1순위로 채워져요.'}</span>
+          <span className="hint" style={{ alignSelf: 'center' }}>{empty ? '모터 전류를 넣고 추천 모델이 나오면 복사할 수 있어요.' : '비교에 담은 모델이 있으면 그 모델로, 없으면 추천 1순위로 채워져요.'}</span>
         </div>
       </div>
     </div>

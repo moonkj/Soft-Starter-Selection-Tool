@@ -28,7 +28,7 @@ export function calcCurrent(volt: number, capInput: number, unit: Unit) {
     const k = kFactor(kw, volt)
     I = (kw * 1000) / (SQ3 * volt * k)
     formula =
-      `I = P / (√3 · V · η·cosφ) = ${+kw.toFixed(2)}kW / (√3 · ${volt}V · ${k.toFixed(2)}) ≈ ${fmtA(I)} A`
+      `I = P / (√3 · V · η·cosφ) = ${+kw.toFixed(2)}kW / (√3 · ${volt}V · ${k.toFixed(2)}) ≈ ${fmtA(I)} A (근사값이에요. 명판 전류를 확인하면 더 정확해요)`
   }
   return { I, kw, formula }
 }

@@ -20,7 +20,7 @@ export default function Readout({ s, amp, formula }: { s: FormState; amp: number
       <div className="ro-body">
         <div className="cond">
           <span className="pick sel"><b>{voltText(s.volt)}</b> · {s.hz}Hz</span>
-          <span className="pick sel"><b>{cap} {s.unit}</b></span>
+          <span className="pick sel"><b>{s.unit === 'A' ? `명판 ${cap} A` : `${cap} kW (계산)`}</b></span>
           <span className="pick sel"><b>Trip Class {s.cls}</b></span>
           <Pick label="주위" v={s.amb === '' ? '' : s.amb === 40 ? '40°C 이하' : `${s.amb}°C`} />
           <Pick label="기동" v={s.starts === '' ? '' : `시간당 ${startsText(s.starts)}`} />

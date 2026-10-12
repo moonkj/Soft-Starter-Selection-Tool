@@ -63,7 +63,7 @@ export default function ConditionPanel({ s, set, onReset }: { s: FormState; set:
         <h2>사용 조건</h2>
         {onReset && <button type="button" className="linkbtn" onClick={onReset}>조건 초기화</button>}
       </div>
-      <p className="sub">전압과 용량만 넣어도 추천이 나와요. 예시로 380V 55kW가 들어 있어요.</p>
+      <p className="sub">전압과 모터 명판의 정격전류(A)만 넣어도 추천이 나와요. 명판을 확인하기 어려우면 'kW로 계산'을 눌러 주세요.</p>
 
       <div className="field">
         <label htmlFor="volt" className="req">전원 전압</label>
@@ -81,17 +81,23 @@ export default function ConditionPanel({ s, set, onReset }: { s: FormState; set:
       </div>
 
       <div className="field">
-        <label htmlFor="cap" className="req">모터 용량</label>
-        <div className="row">
+        <span className="lab req">모터 전류</span>
+        <div className="seg modes" role="group" aria-label="모터 전류를 넣는 방법">
+          <button type="button" aria-pressed={s.unit === 'A'} onClick={() => s.unit !== 'A' && set({ unit: 'A', cap: '' })}>명판 전류(A)</button>
+          <button type="button" aria-pressed={s.unit === 'kW'} onClick={() => s.unit !== 'kW' && set({ unit: 'kW', cap: '' })}>kW로 계산</button>
+        </div>
+        <label htmlFor="cap" className="sr-only">{s.unit === 'A' ? '모터 정격전류 (A)' : '모터 용량 (kW)'}</label>
+        <div className="row amt">
           <input type="number" id="cap" className="grow num" min="0" step="any" inputMode="decimal"
+            placeholder={s.unit === 'A' ? '예: 104' : '예: 55'}
             aria-invalid={capBad} aria-describedby="cap-hint"
             value={s.cap} onChange={(e) => set({ cap: e.target.value })} onWheel={(e) => e.currentTarget.blur()} />
-          <select id="unit" className="unit" value={s.unit} onChange={(e) => set({ unit: e.target.value as Unit })}>
-            <option value="kW">kW</option><option value="A">A (모터 정격전류)</option>
-          </select>
+          <span className="unit-suffix" aria-hidden="true">{s.unit}</span>
         </div>
         {capBad && <span className="field-err" role="alert">0보다 크고 {CAP_MAX.toLocaleString()} 이하인 값을 넣어 주세요.</span>}
-        <span className="hint" id="cap-hint">{s.unit === 'A' ? '모터 명판의 정격전류를 그대로 써요.' : '모터 명판의 정격전류(A)를 알면 A로 넣는 게 가장 정확해요. kW는 일반 효율로 환산해서 카탈로그 kW표와 다를 수 있어요.'}</span>
+        <span className="hint" id="cap-hint">{s.unit === 'A'
+          ? '모터 명판에 적힌 정격전류(A)를 그대로 넣어 주세요. 가장 정확해요.'
+          : '명판 전류를 확인하기 어려울 때만 쓰세요. kW를 일반적인 효율·역률로 계산한 값이라 실제 모터와 다를 수 있어요. 명판을 확인할 수 있으면 "명판 전류(A)"로 넣는 게 정확해요.'}</span>
       </div>
 
       <div className="field">

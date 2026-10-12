@@ -17,7 +17,7 @@ const Admin = ADMIN_ON ? lazy(() => import('./admin/Admin')) : null
 const isAdminHash = () => ADMIN_ON && window.location.hash === '#/admin'
 
 const INITIAL: FormState = {
-  volt: 380, hz: 60, cap: '55', unit: 'kW', cls: 10, control: '', panel: '', ssh: SSH_DEFAULTS, lsfs: LSFS_DEFAULTS, lhvs: LHVS_DEFAULTS, amb: '', starts: '', conn: '', na: false, bp: false, pr: false,
+  volt: 380, hz: 60, cap: '', unit: 'A', cls: 10, control: '', panel: '', ssh: SSH_DEFAULTS, lsfs: LSFS_DEFAULTS, lhvs: LHVS_DEFAULTS, amb: '', starts: '', conn: '', na: false, bp: false, pr: false,
 }
 
 const EMPTY: SelectResult = { amp: 0, kw: null, formula: '', ok: [], excluded: [] }
@@ -83,6 +83,9 @@ export default function App() {
   }, [cond, steps, capNum, hidden])
 
   const empty = !(capNum > 0) || !(res.amp > 0)
+  const emptyMsg = f.unit === 'A'
+    ? '모터 명판의 정격전류(A)를 넣으면 추천이 나와요. 명판을 확인하기 어려우면 왼쪽에서 "kW로 계산"을 눌러 주세요.'
+    : '모터 용량(kW)을 넣으면 추천이 나와요. 명판 전류(A)를 알면 "명판 전류(A)"로 넣는 게 더 정확해요.'
   const selCmp = cmp.filter((x) => x.sig === sig).map((x) => x.r)
   const inCmp = (r: Recommendation) => selCmp.some((x) => x.seriesId === r.seriesId && x.model === r.model)
   const pick = selCmp.length ? selCmp : res.ok.slice(0, 1)
@@ -127,7 +130,7 @@ export default function App() {
           <ConditionPanel s={f} set={set} onReset={() => setF(INITIAL)} />
           <div style={{ minWidth: 0 }}>
             <Readout s={f} amp={empty ? 0 : res.amp} formula={res.formula} />
-            <div className="sr-only" role="status">{empty ? '모터 용량을 넣으면 추천이 나와요.' : `필요 전류 ${Math.round(res.amp * 10) / 10}A, 추천 ${res.ok.length}건`}</div>
+            <div className="sr-only" role="status">{empty ? emptyMsg : `필요 전류 ${Math.round(res.amp * 10) / 10}A, 추천 ${res.ok.length}건`}</div>
 
             {cfg === 'fail' && draft === null && <div className="note" role="alert">단종·판매 중지 설정을 불러오지 못했어요. 단종된 모델이 결과에 섞여 있을 수 있어요. 새로고침해 보세요.</div>}
             <div className="sec-h">
@@ -138,7 +141,7 @@ export default function App() {
               {cfg === 'loading' && draft === null ? (
                 <div className="empty">불러오는 중이에요.</div>
               ) : empty ? (
-                <div className="empty">모터 용량을 넣으면 추천이 나와요.</div>
+                <div className="empty">{emptyMsg}</div>
               ) : res.ok.length ? (
                 res.ok.map((r) => (
                   <ResultCard key={r.seriesId} r={r} best={r.seriesId === bestId}

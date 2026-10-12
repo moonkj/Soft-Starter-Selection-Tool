@@ -81,3 +81,9 @@ dialog.cat-dlg{max-height:calc(100dvh - 24px)}
   .tbl-wrap.cmp{overflow:visible!important}
   a{color:#000;text-decoration:none}
 }
+
+/* 모터 전류 입력: 명판 전류(A)가 기본, kW 계산은 보조 */
+.panel.panel .seg.modes{display:flex;width:100%}
+.panel.panel .seg.modes button{flex:1;min-height:44px}
+.panel.panel .row.amt{align-items:stretch}
+.panel.panel .unit-suffix{display:inline-flex;align-items:center;min-width:44px;justify-content:center;padding:0 10px;border:1px solid var(--field-line);border-radius:2px;background:var(--surface-2);color:var(--muted);font-family:var(--mono);font-weight:600}
