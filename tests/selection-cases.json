@@ -1,0 +1,335 @@
+[
+ {
+  "id": "C1",
+  "desc": "380V 60Hz 55kW 원심 펌프 (기본값)",
+  "input": {
+   "volt": "380",
+   "cap": "55",
+   "unit": "kW",
+   "load": "pump"
+  },
+  "expected": {
+   "amp": "104",
+   "ok": [
+    {
+     "model": "SSMe-0115B-V5-C1",
+     "rated": "108 A",
+     "margin": "+3%",
+     "warn": []
+    },
+    {
+     "model": "SSMi-0115B-V5-C1",
+     "rated": "108 A",
+     "margin": "+3%",
+     "warn": []
+    },
+    {
+     "model": "LSFS 3056 S",
+     "rated": "112 A",
+     "margin": "+7%",
+     "warn": []
+    },
+    {
+     "model": "LSFS 3056 BPS",
+     "rated": "112 A",
+     "margin": "+7%",
+     "warn": []
+    },
+    {
+     "model": "LS-LVSS-201",
+     "rated": "132 A",
+     "margin": "+26%",
+     "warn": []
+    },
+    {
+     "model": "SSCe-140-V4-C1",
+     "rated": "140 A",
+     "margin": "+34%",
+     "warn": []
+    },
+    {
+     "model": "SSCi-140-V4-C1",
+     "rated": "140 A",
+     "margin": "+34%",
+     "warn": []
+    }
+   ],
+   "excluded": [
+    "LHVS — 고압 전용 제품",
+    "SSH — 고압 전용 제품"
+   ]
+  }
+ },
+ {
+  "id": "C2",
+  "desc": "480V 60Hz 100HP 컨베이어, UL/cETL 필수",
+  "input": {
+   "volt": "480",
+   "cap": "100",
+   "unit": "HP",
+   "load": "conv",
+   "na": true
+  },
+  "expected": {
+   "amp": "108",
+   "ok": [
+    {
+     "model": "SSMe-0184B-V5-C1",
+     "rated": "116 A",
+     "margin": "+7%",
+     "warn": []
+    },
+    {
+     "model": "SSMi-0184B-V5-C1",
+     "rated": "116 A",
+     "margin": "+7%",
+     "warn": []
+    },
+    {
+     "model": "SSCe-140-V6-C1",
+     "rated": "120 A",
+     "margin": "+11%",
+     "warn": []
+    },
+    {
+     "model": "SSCi-140-V6-C1",
+     "rated": "120 A",
+     "margin": "+11%",
+     "warn": []
+    },
+    {
+     "model": "LS-LVSS-203",
+     "rated": "132 A",
+     "margin": "+22%",
+     "warn": []
+    }
+   ],
+   "excluded": [
+    "LSFS 단방향 — UL/cETL 인증 정보 없음",
+    "LSFS By-Pass — UL/cETL 인증 정보 없음",
+    "LHVS — 고압 전용 제품",
+    "SSH — 고압 전용 제품"
+   ]
+  }
+ },
+ {
+  "id": "C3",
+  "desc": "690V 200A(FLC) 크러셔",
+  "input": {
+   "volt": "690",
+   "cap": "200",
+   "unit": "A",
+   "load": "crusher"
+  },
+  "expected": {
+   "amp": "200",
+   "ok": [
+    {
+     "model": "SSMi-0250B-V7-C1",
+     "rated": "200 A",
+     "margin": "+0%",
+     "warn": [
+      "크러셔급 고부하는 Heavy Duty 기준으로 골랐어요. 기동 조건은 기술 검토가 필요해요."
+     ]
+    }
+   ],
+   "excluded": [
+    "SSCe — 690V 미지원 (200~575V)",
+    "SSCi — 690V 미지원 (200~575V)",
+    "SSMe — 690V 미지원 (200~525V)",
+    "LVSS — 690V 미지원 (200~480V)",
+    "LSFS 단방향 — 690V 미지원 (220/380/440V급)",
+    "LSFS By-Pass — 690V 미지원 (220/380/440V급)",
+    "LHVS — 고압 전용 제품",
+    "SSH — 고압 전용 제품"
+   ]
+  }
+ },
+ {
+  "id": "C4",
+  "desc": "6.6kV 1000kW 펌프",
+  "input": {
+   "volt": "6600",
+   "cap": "1000",
+   "unit": "kW",
+   "load": "pump"
+  },
+  "expected": {
+   "amp": "103",
+   "ok": [
+    {
+     "model": "SSH-L-0110-V06",
+     "rated": "110 A",
+     "margin": "+7%",
+     "warn": []
+    },
+    {
+     "model": "LHVS 6 1200 60Hz",
+     "rated": "130 A",
+     "margin": "+26%",
+     "warn": []
+    }
+   ],
+   "excluded": [
+    "SSCe — 저압 전용 제품",
+    "SSCi — 저압 전용 제품",
+    "SSMe — 저압 전용 제품",
+    "SSMi — 저압 전용 제품",
+    "LVSS — 저압 전용 제품",
+    "LSFS 단방향 — 저압 전용 제품",
+    "LSFS By-Pass — 저압 전용 제품"
+   ]
+  }
+ },
+ {
+  "id": "C5",
+  "desc": "220V 7.5kW 팬, 바이패스 필수",
+  "input": {
+   "volt": "220",
+   "cap": "7.5",
+   "unit": "kW",
+   "load": "fan",
+   "bp": true
+  },
+  "expected": {
+   "amp": "26.2",
+   "ok": [
+    {
+     "model": "LS-LVSS-105",
+     "rated": "29 A",
+     "margin": "+11%",
+     "warn": []
+    },
+    {
+     "model": "LSFS 2007 BPS",
+     "rated": "30 A",
+     "margin": "+14%",
+     "warn": []
+    },
+    {
+     "model": "SSCe-034-V4-C1",
+     "rated": "34 A",
+     "margin": "+30%",
+     "warn": []
+    },
+    {
+     "model": "SSCi-034-V4-C1",
+     "rated": "34 A",
+     "margin": "+30%",
+     "warn": []
+    },
+    {
+     "model": "SSMe-0042B-V5-C1",
+     "rated": "34 A",
+     "margin": "+30%",
+     "warn": []
+    },
+    {
+     "model": "SSMi-0042B-V5-C1",
+     "rated": "34 A",
+     "margin": "+30%",
+     "warn": []
+    }
+   ],
+   "excluded": [
+    "LSFS 단방향 — 바이패스 없음 (단방향 연속 SCR)",
+    "LHVS — 고압 전용 제품",
+    "SSH — 고압 전용 제품"
+   ]
+  }
+ },
+ {
+  "id": "C6",
+  "desc": "400V 30kW 펌프, In-delta, 주위 50°C",
+  "input": {
+   "volt": "400",
+   "cap": "30",
+   "unit": "kW",
+   "load": "pump",
+   "conn": "delta",
+   "amb": "50"
+  },
+  "expected": {
+   "amp": "54.1",
+   "ok": [
+    {
+     "model": "SSMi-0042B-V5-C1",
+     "rated": "34 A",
+     "margin": "+9%",
+     "warn": [
+      "정격은 40°C 기준이에요. 주위 50°C면 derating 확인이 필요해요."
+     ]
+    },
+    {
+     "model": "LS-LVSS-107",
+     "rated": "35 A",
+     "margin": "+12%",
+     "warn": []
+    }
+   ],
+   "excluded": [
+    "SSCe — In-delta 결선 미지원",
+    "SSCi — In-delta 결선 미지원",
+    "SSMe — In-delta 결선 미지원",
+    "LSFS 단방향 — In-delta 결선 미지원",
+    "LSFS By-Pass — In-delta 결선 미지원",
+    "LHVS — 고압 전용 제품",
+    "SSH — 고압 전용 제품"
+   ]
+  }
+ },
+ {
+  "id": "C7",
+  "desc": "440V 500A(FLC) 압축기, 시간당 6~10회 기동",
+  "input": {
+   "volt": "440",
+   "cap": "500",
+   "unit": "A",
+   "load": "comp",
+   "starts": "10"
+  },
+  "expected": {
+   "amp": "500",
+   "ok": [
+    {
+     "model": "LS-LVSS-309-1 / -2",
+     "rated": "500 A",
+     "margin": "+0%",
+     "warn": [
+      "정격 기동 횟수는 시간당 3회예요. 6~10회는 기술 확인이 필요해요."
+     ]
+    },
+    {
+     "model": "SSMe-0550B-V5-C1",
+     "rated": "527 A",
+     "margin": "+5%",
+     "warn": []
+    },
+    {
+     "model": "SSMi-0550B-V5-C1",
+     "rated": "527 A",
+     "margin": "+5%",
+     "warn": []
+    },
+    {
+     "model": "LSFS 4300 S",
+     "rated": "600 A",
+     "margin": "+20%",
+     "warn": []
+    },
+    {
+     "model": "LSFS 4300 BPS",
+     "rated": "600 A",
+     "margin": "+20%",
+     "warn": []
+    }
+   ],
+   "excluded": [
+    "SSCe — 정격 초과 (최대 200 A)",
+    "SSCi — 정격 초과 (최대 200 A)",
+    "LHVS — 고압 전용 제품",
+    "SSH — 고압 전용 제품"
+   ]
+  }
+ }
+]

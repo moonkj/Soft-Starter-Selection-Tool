@@ -1,0 +1,4106 @@
+{
+ "_source": "첨부 카탈로그 3종에서 옮긴 값. odm A/B/C는 가칭 — 실제 생산처명으로 교체 필요",
+ "series": {
+  "ssce": {
+   "name": "SSCe",
+   "family": "SSC",
+   "odm": "C",
+   "positioning": "경제형 · 기동 전용",
+   "bypass": "내장",
+   "motor_protection": false,
+   "in_delta": false,
+   "certs": [
+    "IEC",
+    "UL",
+    "KC"
+   ],
+   "na_cert": true,
+   "display": "LED + 로터리 스위치",
+   "comm": "옵션"
+  },
+  "ssci": {
+   "name": "SSCi",
+   "family": "SSC",
+   "odm": "C",
+   "positioning": "경제형 · 모터 보호 내장",
+   "bypass": "내장",
+   "motor_protection": true,
+   "in_delta": false,
+   "certs": [
+    "IEC",
+    "UL",
+    "KC"
+   ],
+   "na_cert": true,
+   "display": "LED + 로터리 스위치",
+   "comm": "옵션"
+  },
+  "ssme": {
+   "name": "SSMe",
+   "family": "SSM",
+   "odm": "C",
+   "positioning": "표준형 · 그래픽 디스플레이",
+   "bypass": "내장",
+   "motor_protection": true,
+   "in_delta": false,
+   "certs": [
+    "IEC",
+    "UL",
+    "KC"
+   ],
+   "na_cert": true,
+   "display": "그래픽",
+   "comm": "Modbus RTU/TCP, Profibus, Profinet, EtherNet/IP, DeviceNet (옵션)"
+  },
+  "ssmi": {
+   "name": "SSMi",
+   "family": "SSM",
+   "odm": "C",
+   "positioning": "고급형 · In-delta · Smart Card",
+   "bypass": "내장",
+   "motor_protection": true,
+   "in_delta": true,
+   "certs": [
+    "IEC",
+    "UL",
+    "KC"
+   ],
+   "na_cert": true,
+   "display": "그래픽",
+   "comm": "Modbus RTU/TCP, Profibus, Profinet, EtherNet/IP, DeviceNet (옵션)"
+  },
+  "lvss": {
+   "name": "LVSS",
+   "family": "Beyond X",
+   "odm": "B",
+   "positioning": "터치스크린 · 에너지 절약(iERS)",
+   "bypass": "Frame 1~3 내장 / 4~5 없음",
+   "motor_protection": true,
+   "in_delta": true,
+   "certs": [
+    "CE",
+    "cETL",
+    "KC"
+   ],
+   "na_cert": true,
+   "display": "3.5in 컬러 터치",
+   "comm": "Modbus RTU 기본, EtherNet/IP·Modbus TCP·Profibus 옵션"
+  },
+  "lsfs-s": {
+   "name": "LSFS 단방향",
+   "family": "Motorsol",
+   "odm": "A",
+   "positioning": "연속 SCR 운전 · 최대 600kW",
+   "bypass": "없음",
+   "motor_protection": true,
+   "in_delta": false,
+   "certs": [
+    "EN 61131-2",
+    "EN 50178"
+   ],
+   "na_cert": false,
+   "display": "LCD 4x20",
+   "comm": "RS-485 (옵션)"
+  },
+  "lsfs-b": {
+   "name": "LSFS By-Pass",
+   "family": "Motorsol",
+   "odm": "A",
+   "positioning": "MC 바이패스 내장 · 최대 300kW",
+   "bypass": "MC 내장",
+   "motor_protection": true,
+   "in_delta": false,
+   "certs": [
+    "EN 61131-2",
+    "EN 50178"
+   ],
+   "na_cert": false,
+   "display": "LCD 4x20",
+   "comm": "RS-485 (옵션)"
+  },
+  "lhvs": {
+   "name": "LHVS",
+   "family": "HV-Motorsol",
+   "odm": "A",
+   "positioning": "고압 판넬형 · 3.3/6.6kV",
+   "bypass": "VCS 내장",
+   "motor_protection": true,
+   "in_delta": false,
+   "certs": [],
+   "na_cert": false,
+   "display": "터치 모니터",
+   "comm": "RS-422/485",
+   "mv": true
+  },
+  "ssh": {
+   "name": "SSH",
+   "family": "SSH",
+   "odm": "C",
+   "positioning": "고압 판넬형 · 2.3~13.8kV",
+   "bypass": "옵션 (VC/VCB)",
+   "motor_protection": true,
+   "in_delta": false,
+   "certs": [
+    "IEC 62271-200",
+    "NEMA(P)"
+   ],
+   "na_cert": true,
+   "display": "그래픽",
+   "comm": "Modbus, Profibus, Profinet, DeviceNet, EtherNet/IP, IEC 61850",
+   "mv": true
+  }
+ },
+ "models": [
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2002 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 2.2,
+   "ratings": {
+    "rated_A": 9
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2003 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 3.7,
+   "ratings": {
+    "rated_A": 15
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2005 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 5.5,
+   "ratings": {
+    "rated_A": 22
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2007 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 7.5,
+   "ratings": {
+    "rated_A": 30
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2011 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 11,
+   "ratings": {
+    "rated_A": 45
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2015 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 15,
+   "ratings": {
+    "rated_A": 60
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2022 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 22,
+   "ratings": {
+    "rated_A": 88
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2030 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 30,
+   "ratings": {
+    "rated_A": 120
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2037 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 37,
+   "ratings": {
+    "rated_A": 150
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2056 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 56,
+   "ratings": {
+    "rated_A": 225
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2075 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 75,
+   "ratings": {
+    "rated_A": 300
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2098 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 98,
+   "ratings": {
+    "rated_A": 390
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2112 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 112,
+   "ratings": {
+    "rated_A": 450
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2150 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 150,
+   "ratings": {
+    "rated_A": 600
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2187 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 187,
+   "ratings": {
+    "rated_A": 740
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 2225 S",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 225,
+   "ratings": {
+    "rated_A": 900
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3003 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 3.7,
+   "ratings": {
+    "rated_A": 7.5
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3005 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 5.5,
+   "ratings": {
+    "rated_A": 11
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3007 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 7.5,
+   "ratings": {
+    "rated_A": 15
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3011 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 11,
+   "ratings": {
+    "rated_A": 22
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3015 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 15,
+   "ratings": {
+    "rated_A": 30
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3022 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 22,
+   "ratings": {
+    "rated_A": 45
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3030 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 30,
+   "ratings": {
+    "rated_A": 60
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3037 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 37,
+   "ratings": {
+    "rated_A": 75
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3056 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 56,
+   "ratings": {
+    "rated_A": 112
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3075 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 75,
+   "ratings": {
+    "rated_A": 150
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3112 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 112,
+   "ratings": {
+    "rated_A": 225
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3150 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 150,
+   "ratings": {
+    "rated_A": 300
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3195 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 195,
+   "ratings": {
+    "rated_A": 390
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3240 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 240,
+   "ratings": {
+    "rated_A": 480
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3300 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 300,
+   "ratings": {
+    "rated_A": 600
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3375 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 375,
+   "ratings": {
+    "rated_A": 750
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3450 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 450,
+   "ratings": {
+    "rated_A": 900
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 3600 S",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 600,
+   "ratings": {
+    "rated_A": 1200
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": "600kW는 외부 By-pass 필수"
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4003 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 3.7,
+   "ratings": {
+    "rated_A": 7.5
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4005 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 5.5,
+   "ratings": {
+    "rated_A": 11
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4007 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 7.5,
+   "ratings": {
+    "rated_A": 15
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4011 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 11,
+   "ratings": {
+    "rated_A": 22
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4015 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 15,
+   "ratings": {
+    "rated_A": 30
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4022 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 22,
+   "ratings": {
+    "rated_A": 45
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4030 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 30,
+   "ratings": {
+    "rated_A": 60
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4037 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 37,
+   "ratings": {
+    "rated_A": 75
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4056 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 56,
+   "ratings": {
+    "rated_A": 112
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4075 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 75,
+   "ratings": {
+    "rated_A": 150
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4112 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 112,
+   "ratings": {
+    "rated_A": 225
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4150 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 150,
+   "ratings": {
+    "rated_A": 300
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4195 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 195,
+   "ratings": {
+    "rated_A": 390
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4240 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 240,
+   "ratings": {
+    "rated_A": 480
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4300 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 300,
+   "ratings": {
+    "rated_A": 600
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4375 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 375,
+   "ratings": {
+    "rated_A": 750
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4450 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 450,
+   "ratings": {
+    "rated_A": 900
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-s",
+   "code": "LSFS 4600 S",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 600,
+   "ratings": {
+    "rated_A": 1200
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    8,
+    9
+   ],
+   "notes": "600kW는 외부 By-pass 필수"
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2002 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 2.2,
+   "ratings": {
+    "rated_A": 9
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2003 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 3.7,
+   "ratings": {
+    "rated_A": 15
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2005 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 5.5,
+   "ratings": {
+    "rated_A": 22
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2007 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 7.5,
+   "ratings": {
+    "rated_A": 30
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2011 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 11,
+   "ratings": {
+    "rated_A": 45
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2015 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 15,
+   "ratings": {
+    "rated_A": 60
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2022 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 22,
+   "ratings": {
+    "rated_A": 88
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2030 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 30,
+   "ratings": {
+    "rated_A": 120
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2037 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 37,
+   "ratings": {
+    "rated_A": 150
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2056 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 56,
+   "ratings": {
+    "rated_A": 225
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2075 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 75,
+   "ratings": {
+    "rated_A": 300
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2098 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 98,
+   "ratings": {
+    "rated_A": 390
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 2112 BPS",
+   "voltage_class": "220V",
+   "v_min": 200,
+   "v_max": 240,
+   "motor_kw": 112,
+   "ratings": {
+    "rated_A": 450
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3003 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 3.7,
+   "ratings": {
+    "rated_A": 7.5
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3005 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 5.5,
+   "ratings": {
+    "rated_A": 11
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3007 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 7.5,
+   "ratings": {
+    "rated_A": 15
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3011 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 11,
+   "ratings": {
+    "rated_A": 22
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3015 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 15,
+   "ratings": {
+    "rated_A": 30
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3022 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 22,
+   "ratings": {
+    "rated_A": 45
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3030 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 30,
+   "ratings": {
+    "rated_A": 60
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3037 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 37,
+   "ratings": {
+    "rated_A": 75
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3056 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 56,
+   "ratings": {
+    "rated_A": 112
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3075 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 75,
+   "ratings": {
+    "rated_A": 150
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3112 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 112,
+   "ratings": {
+    "rated_A": 225
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3150 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 150,
+   "ratings": {
+    "rated_A": 300
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3195 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 195,
+   "ratings": {
+    "rated_A": 390
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3240 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 240,
+   "ratings": {
+    "rated_A": 480
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 3300 BPS",
+   "voltage_class": "380V",
+   "v_min": 380,
+   "v_max": 415,
+   "motor_kw": 300,
+   "ratings": {
+    "rated_A": 600
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4003 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 3.7,
+   "ratings": {
+    "rated_A": 7.5
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4005 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 5.5,
+   "ratings": {
+    "rated_A": 11
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4007 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 7.5,
+   "ratings": {
+    "rated_A": 15
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4011 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 11,
+   "ratings": {
+    "rated_A": 22
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4015 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 15,
+   "ratings": {
+    "rated_A": 30
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4022 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 22,
+   "ratings": {
+    "rated_A": 45
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4030 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 30,
+   "ratings": {
+    "rated_A": 60
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4037 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 37,
+   "ratings": {
+    "rated_A": 75
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4056 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 56,
+   "ratings": {
+    "rated_A": 112
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4075 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 75,
+   "ratings": {
+    "rated_A": 150
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4112 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 112,
+   "ratings": {
+    "rated_A": 225
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4150 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 150,
+   "ratings": {
+    "rated_A": 300
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4195 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 195,
+   "ratings": {
+    "rated_A": 390
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4240 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 240,
+   "ratings": {
+    "rated_A": 480
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lsfs-b",
+   "code": "LSFS 4300 BPS",
+   "voltage_class": "440V",
+   "v_min": 440,
+   "v_max": 480,
+   "motor_kw": 300,
+   "ratings": {
+    "rated_A": 600
+   },
+   "ambient_max_C": 50,
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    10,
+    11
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lhvs",
+   "code": "LHVS 3 0350",
+   "voltage_class": "3.3kV",
+   "v_min": 3000,
+   "v_max": 3600,
+   "motor_kw": 350,
+   "ratings": {
+    "rated_A": 80
+   },
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    12,
+    13
+   ],
+   "notes": "VCB/VCS 차단용량·계측기 옵션 별도"
+  },
+  {
+   "series": "lhvs",
+   "code": "LHVS 3 0750",
+   "voltage_class": "3.3kV",
+   "v_min": 3000,
+   "v_max": 3600,
+   "motor_kw": 750,
+   "ratings": {
+    "rated_A": 160
+   },
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    12,
+    13
+   ],
+   "notes": "VCB/VCS 차단용량·계측기 옵션 별도"
+  },
+  {
+   "series": "lhvs",
+   "code": "LHVS 3 1500",
+   "voltage_class": "3.3kV",
+   "v_min": 3000,
+   "v_max": 3600,
+   "motor_kw": 1500,
+   "ratings": {
+    "rated_A": 330
+   },
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    12,
+    13
+   ],
+   "notes": "VCB/VCS 차단용량·계측기 옵션 별도"
+  },
+  {
+   "series": "lhvs",
+   "code": "LHVS 6 0350",
+   "voltage_class": "6.6kV",
+   "v_min": 6000,
+   "v_max": 7200,
+   "motor_kw": 350,
+   "ratings": {
+    "rated_A": 40
+   },
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    12,
+    13
+   ],
+   "notes": "VCB/VCS 차단용량·계측기 옵션 별도"
+  },
+  {
+   "series": "lhvs",
+   "code": "LHVS 6 0750",
+   "voltage_class": "6.6kV",
+   "v_min": 6000,
+   "v_max": 7200,
+   "motor_kw": 750,
+   "ratings": {
+    "rated_A": 80
+   },
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    12,
+    13
+   ],
+   "notes": "VCB/VCS 차단용량·계측기 옵션 별도"
+  },
+  {
+   "series": "lhvs",
+   "code": "LHVS 6 1200",
+   "voltage_class": "6.6kV",
+   "v_min": 6000,
+   "v_max": 7200,
+   "motor_kw": 1200,
+   "ratings": {
+    "rated_A": 130
+   },
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    12,
+    13
+   ],
+   "notes": "VCB/VCS 차단용량·계측기 옵션 별도"
+  },
+  {
+   "series": "lhvs",
+   "code": "LHVS 6 1500",
+   "voltage_class": "6.6kV",
+   "v_min": 6000,
+   "v_max": 7200,
+   "motor_kw": 1500,
+   "ratings": {
+    "rated_A": 160
+   },
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    12,
+    13
+   ],
+   "notes": "VCB/VCS 차단용량·계측기 옵션 별도"
+  },
+  {
+   "series": "lhvs",
+   "code": "LHVS 6 1800",
+   "voltage_class": "6.6kV",
+   "v_min": 6000,
+   "v_max": 7200,
+   "motor_kw": 1800,
+   "ratings": {
+    "rated_A": 200
+   },
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    12,
+    13
+   ],
+   "notes": "VCB/VCS 차단용량·계측기 옵션 별도"
+  },
+  {
+   "series": "lhvs",
+   "code": "LHVS 6 2500",
+   "voltage_class": "6.6kV",
+   "v_min": 6000,
+   "v_max": 7200,
+   "motor_kw": 2500,
+   "ratings": {
+    "rated_A": 270
+   },
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    12,
+    13
+   ],
+   "notes": "VCB/VCS 차단용량·계측기 옵션 별도"
+  },
+  {
+   "series": "lhvs",
+   "code": "LHVS 6 3800",
+   "voltage_class": "6.6kV",
+   "v_min": 6000,
+   "v_max": 7200,
+   "motor_kw": 3800,
+   "ratings": {
+    "rated_A": 410
+   },
+   "catalog": "LSFS_Motorsol_KO_2018.pdf",
+   "catalog_pages": [
+    12,
+    13
+   ],
+   "notes": "VCB/VCS 차단용량·계측기 옵션 별도"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-101",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 1,
+   "ratings": {
+    "class10_A": 17,
+    "class20_A": null,
+    "class30_A": null
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    7
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-103",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 1,
+   "ratings": {
+    "class10_A": 22,
+    "class20_A": 17,
+    "class30_A": null
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    7
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-105",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 1,
+   "ratings": {
+    "class10_A": 29,
+    "class20_A": 22,
+    "class30_A": 17
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    7
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-107",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 1,
+   "ratings": {
+    "class10_A": 35,
+    "class20_A": 29,
+    "class30_A": 22
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    7
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-109",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 1,
+   "ratings": {
+    "class10_A": 41,
+    "class20_A": 35,
+    "class30_A": 29
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    7
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-111",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 1,
+   "ratings": {
+    "class10_A": 55,
+    "class20_A": 41,
+    "class30_A": 35
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    7
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-113",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 1,
+   "ratings": {
+    "class10_A": 66,
+    "class20_A": 55,
+    "class30_A": 41
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    7
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-115",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 1,
+   "ratings": {
+    "class10_A": 80,
+    "class20_A": 66,
+    "class30_A": 55
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    7
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-117",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 1,
+   "ratings": {
+    "class10_A": 100,
+    "class20_A": 80,
+    "class30_A": 66
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    7
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-201",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 2,
+   "ratings": {
+    "class10_A": 132,
+    "class20_A": 100,
+    "class30_A": 80
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    8
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-203",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 2,
+   "ratings": {
+    "class10_A": 160,
+    "class20_A": 132,
+    "class30_A": 100
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    8
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-205",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 2,
+   "ratings": {
+    "class10_A": 195,
+    "class20_A": 160,
+    "class30_A": 132
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 5,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    8
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-301",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 3,
+   "ratings": {
+    "class10_A": 242,
+    "class20_A": 195,
+    "class30_A": 160
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 3,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-303",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 3,
+   "ratings": {
+    "class10_A": 302,
+    "class20_A": 242,
+    "class30_A": 195
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 3,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-305",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 3,
+   "ratings": {
+    "class10_A": 361,
+    "class20_A": 302,
+    "class30_A": 242
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 3,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    9
+   ],
+   "notes": ""
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-307-1",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 3,
+   "ratings": {
+    "class10_A": 430,
+    "class20_A": 361,
+    "class30_A": 302
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 3,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    9
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-307-2",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 3,
+   "ratings": {
+    "class10_A": 430,
+    "class20_A": 361,
+    "class30_A": 302
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 3,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    9
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-309-1",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 3,
+   "ratings": {
+    "class10_A": 500,
+    "class20_A": 430,
+    "class30_A": 361
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 3,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    9
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-309-2",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 3,
+   "ratings": {
+    "class10_A": 500,
+    "class20_A": 430,
+    "class30_A": 361
+   },
+   "rated_ambient_C": 50,
+   "rated_starts_per_hour": 3,
+   "bypass": true,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    9
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-401-1",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 4,
+   "ratings": {
+    "class10_A": 610,
+    "class20_A": 500,
+    "class30_A": 430
+   },
+   "rated_ambient_C": 40,
+   "rated_starts_per_hour": 3,
+   "bypass": false,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    10
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-401-2",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 4,
+   "ratings": {
+    "class10_A": 610,
+    "class20_A": 500,
+    "class30_A": 430
+   },
+   "rated_ambient_C": 40,
+   "rated_starts_per_hour": 3,
+   "bypass": false,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    10
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-403-1",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 4,
+   "ratings": {
+    "class10_A": 722,
+    "class20_A": 610,
+    "class30_A": 500
+   },
+   "rated_ambient_C": 40,
+   "rated_starts_per_hour": 3,
+   "bypass": false,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    10
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-403-2",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 4,
+   "ratings": {
+    "class10_A": 722,
+    "class20_A": 610,
+    "class30_A": 500
+   },
+   "rated_ambient_C": 40,
+   "rated_starts_per_hour": 3,
+   "bypass": false,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    10
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-501-1",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 5,
+   "ratings": {
+    "class10_A": 850,
+    "class20_A": 722,
+    "class30_A": 610
+   },
+   "rated_ambient_C": 40,
+   "rated_starts_per_hour": 3,
+   "bypass": false,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    11
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-501-2",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 5,
+   "ratings": {
+    "class10_A": 850,
+    "class20_A": 722,
+    "class30_A": 610
+   },
+   "rated_ambient_C": 40,
+   "rated_starts_per_hour": 3,
+   "bypass": false,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    11
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-503-1",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 5,
+   "ratings": {
+    "class10_A": 960,
+    "class20_A": 850,
+    "class30_A": 722
+   },
+   "rated_ambient_C": 40,
+   "rated_starts_per_hour": 3,
+   "bypass": false,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    11
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-503-2",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 5,
+   "ratings": {
+    "class10_A": 960,
+    "class20_A": 850,
+    "class30_A": 722
+   },
+   "rated_ambient_C": 40,
+   "rated_starts_per_hour": 3,
+   "bypass": false,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    11
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-505-1",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 5,
+   "ratings": {
+    "class10_A": 1080,
+    "class20_A": 960,
+    "class30_A": 850
+   },
+   "rated_ambient_C": 40,
+   "rated_starts_per_hour": 3,
+   "bypass": false,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    11
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "lvss",
+   "code": "LS-LVSS-505-2",
+   "voltage_class": "200-480V",
+   "v_min": 200,
+   "v_max": 480,
+   "frame": 5,
+   "ratings": {
+    "class10_A": 1080,
+    "class20_A": 960,
+    "class30_A": 850
+   },
+   "rated_ambient_C": 40,
+   "rated_starts_per_hour": 3,
+   "bypass": false,
+   "catalog": "LVSS_BeyondX_KO.pdf",
+   "catalog_pages": [
+    6,
+    11
+   ],
+   "notes": "-1=AC110V, -2=AC220V 조작전원"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-018",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 18,
+    "normal_50C_A": 17,
+    "heavy_40C_A": 17,
+    "heavy_50C_A": 15
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-034",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 34,
+    "normal_50C_A": 32,
+    "heavy_40C_A": 30,
+    "heavy_50C_A": 28
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-042",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 42,
+    "normal_50C_A": 40,
+    "heavy_40C_A": 36,
+    "heavy_50C_A": 33
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-048",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 48,
+    "normal_50C_A": 44,
+    "heavy_40C_A": 40,
+    "heavy_50C_A": 36
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-060",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 60,
+    "normal_50C_A": 55,
+    "heavy_40C_A": 49,
+    "heavy_50C_A": 45
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-075",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 75,
+    "normal_50C_A": 68,
+    "heavy_40C_A": 65,
+    "heavy_50C_A": 59
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-085",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 85,
+    "normal_50C_A": 78,
+    "heavy_40C_A": 73,
+    "heavy_50C_A": 67
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-100",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 100,
+    "normal_50C_A": 100,
+    "heavy_40C_A": 96,
+    "heavy_50C_A": 87
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-140",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 140,
+    "normal_50C_A": 133,
+    "heavy_40C_A": 120,
+    "heavy_50C_A": 100
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-170",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 170,
+    "normal_50C_A": 157,
+    "heavy_40C_A": 142,
+    "heavy_50C_A": 130
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssce",
+   "code": "SSCe-200",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 200,
+    "normal_50C_A": 186,
+    "heavy_40C_A": 165,
+    "heavy_50C_A": 152
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-018",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 18,
+    "normal_50C_A": 17,
+    "heavy_40C_A": 17,
+    "heavy_50C_A": 15
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-034",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 34,
+    "normal_50C_A": 32,
+    "heavy_40C_A": 30,
+    "heavy_50C_A": 28
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-042",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 42,
+    "normal_50C_A": 40,
+    "heavy_40C_A": 36,
+    "heavy_50C_A": 33
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-048",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 48,
+    "normal_50C_A": 44,
+    "heavy_40C_A": 40,
+    "heavy_50C_A": 36
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-060",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 60,
+    "normal_50C_A": 55,
+    "heavy_40C_A": 49,
+    "heavy_50C_A": 45
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-075",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 75,
+    "normal_50C_A": 68,
+    "heavy_40C_A": 65,
+    "heavy_50C_A": 59
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-085",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 85,
+    "normal_50C_A": 78,
+    "heavy_40C_A": 73,
+    "heavy_50C_A": 67
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-100",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 100,
+    "normal_50C_A": 100,
+    "heavy_40C_A": 96,
+    "heavy_50C_A": 87
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-140",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 140,
+    "normal_50C_A": 133,
+    "heavy_40C_A": 120,
+    "heavy_50C_A": 100
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-170",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 170,
+    "normal_50C_A": 157,
+    "heavy_40C_A": 142,
+    "heavy_50C_A": 130
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssci",
+   "code": "SSCi-200",
+   "voltage_class": "200-440V(V4) / 200-575V(V6)",
+   "v_min": 200,
+   "v_max": 575,
+   "ratings": {
+    "normal_40C_A": 200,
+    "normal_50C_A": 186,
+    "heavy_40C_A": 165,
+    "heavy_50C_A": 152
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    18,
+    6
+   ],
+   "notes": "Normal=4xFLC 6s, Heavy=4xFLC 20s"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0024B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 20,
+    "heavy_40C_A": 16
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0042B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 34,
+    "heavy_40C_A": 27
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0052B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 42,
+    "heavy_40C_A": 35
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0064B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 63,
+    "heavy_40C_A": 51
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0069B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 69,
+    "heavy_40C_A": 62
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0105B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 86,
+    "heavy_40C_A": 69
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0115B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 108,
+    "heavy_40C_A": 86
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0135B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 129,
+    "heavy_40C_A": 103
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0184B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 144,
+    "heavy_40C_A": 116
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0200B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 171,
+    "heavy_40C_A": 138
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0229B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 194,
+    "heavy_40C_A": 157
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0250B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 244,
+    "heavy_40C_A": 200
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0352B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 287,
+    "heavy_40C_A": 234
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0397B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 323,
+    "heavy_40C_A": 263
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0410B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 410,
+    "heavy_40C_A": 380
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0550B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 527,
+    "heavy_40C_A": 427
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssme",
+   "code": "SSMe-0580B",
+   "voltage_class": "200-525V(V5)",
+   "v_min": 200,
+   "v_max": 525,
+   "ratings": {
+    "normal_40C_A": 579,
+    "heavy_40C_A": 470
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0024B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 20,
+    "heavy_40C_A": 16
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0042B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 34,
+    "heavy_40C_A": 27
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0052B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 42,
+    "heavy_40C_A": 35
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0064B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 63,
+    "heavy_40C_A": 51
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0069B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 69,
+    "heavy_40C_A": 62
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0105B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 86,
+    "heavy_40C_A": 69
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0115B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 108,
+    "heavy_40C_A": 86
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0135B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 129,
+    "heavy_40C_A": 103
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0184B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 144,
+    "heavy_40C_A": 116
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0200B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 171,
+    "heavy_40C_A": 138
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0229B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 194,
+    "heavy_40C_A": 157
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0250B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 244,
+    "heavy_40C_A": 200
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0352B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 287,
+    "heavy_40C_A": 234
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0397B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 323,
+    "heavy_40C_A": 263
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0410B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 410,
+    "heavy_40C_A": 380
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0550B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 527,
+    "heavy_40C_A": 427
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0580B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 579,
+    "heavy_40C_A": 470
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0835B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 654,
+    "heavy_40C_A": 535
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-0940B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 736,
+    "heavy_40C_A": 603
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-1070B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 950,
+    "heavy_40C_A": 785
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-1230B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 1154,
+    "heavy_40C_A": 959
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssmi",
+   "code": "SSMi-1250B",
+   "voltage_class": "200-525V(V5) / 380-690V(V7)",
+   "v_min": 200,
+   "v_max": 690,
+   "ratings": {
+    "normal_40C_A": 1250,
+    "heavy_40C_A": 1156
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    19,
+    12
+   ],
+   "notes": "Normal=3.5xFLC 15s, Heavy=4xFLC 20s, 40°C 초과 derating"
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0070",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 70
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0110",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 110
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0200",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 200
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0220",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 220
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0250",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 250
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0300",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 300
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0400",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 400
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0450",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 450
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0500",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 500
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0540",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 540
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0600",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 600
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0700",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 700
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0800",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 800
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-0900",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 900
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-1000",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 1000
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": ""
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-1100",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 1100
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": "2.3/4.16kV는 1000A까지"
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-1200",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 1200
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": "2.3/4.16kV는 1000A까지"
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-1300",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 1300
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": "2.3/4.16kV는 1000A까지"
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-1400",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 1400
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": "2.3/4.16kV는 1000A까지"
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-1500",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 1500
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": "2.3/4.16kV는 1000A까지"
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-1600",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 1600
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": "2.3/4.16kV는 1000A까지"
+  },
+  {
+   "series": "ssh",
+   "code": "SSH-1700",
+   "voltage_class": "2.3-13.8kV",
+   "v_min": 2070,
+   "v_max": 15180,
+   "ratings": {
+    "scr_A": 1700
+   },
+   "catalog": "SSC_SSM_SSH_KO_2023.pdf",
+   "catalog_pages": [
+    22,
+    23
+   ],
+   "notes": "2.3/4.16kV는 1000A까지"
+  }
+ ]
+}

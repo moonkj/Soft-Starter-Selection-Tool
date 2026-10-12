@@ -1,0 +1,12 @@
+node_modules
+dist
+
+# 사내 전용(공개 저장소에 올리지 않는다)
+.env.local
+.env.*.local
+src/admin/makers.local.ts
+data/catalog.original.json
+catalogs/
+prototype/
+.claude/
+data/catalog_models.csv

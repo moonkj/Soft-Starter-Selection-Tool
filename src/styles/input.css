@@ -1,0 +1,90 @@
+/* B: 조건 입력 패널 + 판독창 (LS ELECTRIC 톤: 흰 면, 얇은 라인, 넉넉한 여백). 색은 모두 토큰 사용 */
+
+/* ---------- 조건 패널 ---------- */
+.panel.panel{padding:28px 24px 24px;border-radius:4px;border-top:3px solid var(--accent)}
+.panel.panel h2{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.panel.panel .sub{font-size:13px;line-height:1.6;margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.panel.panel .field{gap:8px;margin-bottom:22px}
+.panel.panel .field>label,.panel.panel .field>.lab{font-size:13px;font-weight:700;color:var(--ink);letter-spacing:0}
+.panel.panel .req::after{content:" 필수";color:var(--accent);font-weight:700;font-size:11px;margin-left:4px}
+.panel.panel select,.panel.panel input[type=number]{border-radius:3px;padding:10px 12px;min-height:42px;background:var(--surface);border:1px solid var(--line);transition:border-color .15s,box-shadow .15s}
+.panel.panel select:hover,.panel.panel input[type=number]:hover{border-color:var(--muted)}
+.panel.panel select:focus-visible,.panel.panel input[type=number]:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.panel.panel input.num{font-size:16px;font-weight:600}
+.panel.panel .unit{width:104px;flex:none}
+.panel.panel .hint{font-size:12.5px;line-height:1.55;color:var(--muted)}
+
+/* 주파수 분할 버튼 */
+.panel.panel .row{align-items:stretch}
+.panel.panel .seg{display:inline-flex;flex:none;padding:0;gap:0;border:1px solid var(--line);border-radius:3px;background:var(--surface);overflow:hidden}
+.panel.panel .seg button{min-height:40px;padding:0 14px;border-radius:0;font-size:13.5px;font-weight:500;color:var(--muted);background:var(--surface);box-shadow:none}
+.panel.panel .seg button+button{border-left:1px solid var(--line)}
+.panel.panel .seg button:hover{color:var(--ink);background:var(--surface-2)}
+.panel.panel .seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:700;box-shadow:none}
+.panel.panel .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.panel.panel .seg button[aria-pressed="true"]:focus-visible{outline-color:var(--accent-ink)}
+
+/* Trip Class 칩: 3등분 */
+.panel.panel .chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.panel.panel .chip{border:0;border-radius:0;padding:10px 4px;min-height:42px;font-size:13.5px;color:var(--muted);background:var(--surface);text-align:center}
+.panel.panel .chip+.chip{border-left:1px solid var(--line)}
+.panel.panel .chip:hover{color:var(--ink);background:var(--surface-2)}
+.panel.panel .chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:700}
+.panel.panel .chip:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.panel.panel .chip[aria-pressed="true"]:focus-visible{outline-color:var(--accent-ink)}
+.panel.panel .hint.desc{background:var(--surface-2);border-left:2px solid var(--accent);padding:8px 10px;border-radius:0 3px 3px 0}
+
+/* 상세 조건 접힘 */
+.panel.panel details.more{border:1px solid var(--line);border-radius:3px;padding:0;margin-top:6px}
+.panel.panel details.more summary{padding:13px 14px;font-size:14px;font-weight:700;color:var(--ink);background:var(--surface-2);border-radius:3px;min-height:44px}
+.panel.panel details.more[open] summary{border-bottom:1px solid var(--line);border-radius:3px 3px 0 0}
+.panel.panel details.more summary::after{content:"+";font-size:18px;line-height:1;color:var(--accent)}
+.panel.panel details.more[open] summary::after{content:"−"}
+.panel.panel details.more summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.panel.panel details.more .inner{padding:18px 14px 2px}
+.panel.panel details.more .inner>.field:last-child{margin-bottom:16px}
+
+/* 형명 옵션 묶음: 헤더 띠 + 2열(이름 | 선택) + 구분선 */
+.panel.panel .optgroup{gap:0;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--surface)}
+.panel.panel .optgroup>.lab{display:block;padding:9px 12px;background:var(--surface-2);border-bottom:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--ink);letter-spacing:.01em;border-left:3px solid var(--accent)}
+.panel.panel .optrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);align-items:center;gap:10px;margin:0;padding:8px 12px;border-bottom:1px solid var(--line);font-size:13px;cursor:default}
+.panel.panel .optrow>span{color:var(--muted);line-height:1.35;overflow-wrap:anywhere}
+.panel.panel .optrow select{width:100%;min-height:38px;padding:7px 8px;font-size:13px}
+.panel.panel .optgroup>.hint{display:block;padding:9px 12px;font-size:12px;background:var(--surface)}
+
+/* 체크 항목 */
+.panel.panel .check{display:flex;align-items:center;gap:10px;margin:0;padding:10px 2px;min-height:44px;font-size:13.5px;border-bottom:1px solid var(--line);color:var(--ink)}
+.panel.panel .checks .check:last-child{border-bottom:0}
+.panel.panel .check input{width:18px;height:18px;margin:0;flex:none;accent-color:var(--accent)}
+.panel.panel .check:has(input:focus-visible) input{outline:2px solid var(--accent);outline-offset:2px}
+
+@media (max-width:480px){
+  .panel.panel{padding:22px 16px 18px}
+  .panel.panel .unit{width:92px}
+  .panel.panel .optrow{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+
+/* ---------- 판독창 (계기판) ---------- */
+.readout.readout{position:relative;background:var(--readout);color:var(--readout-ink);border-radius:4px;padding:26px 30px 24px;gap:12px 40px;border-bottom:3px solid var(--accent);overflow:hidden}
+.readout.readout .lbl{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--readout-dim);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.readout.readout .lbl::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.readout.readout .amp{font-size:64px;font-weight:600;line-height:1;letter-spacing:-.03em;color:var(--readout-ink);font-variant-numeric:tabular-nums;display:flex;align-items:baseline;white-space:nowrap}
+.readout.readout .amp small{font-size:26px;font-weight:500;color:var(--readout-dim);margin-left:8px}
+.readout.readout .ro-body{min-width:0;padding-left:40px;border-left:1px solid var(--readout-dim)}
+.readout.readout .cond{display:flex;flex-wrap:wrap;gap:8px;font-size:13.5px}
+.readout.readout .cond span{padding:4px 10px;border:1px solid var(--readout-dim);border-radius:2px;color:var(--readout-ink);line-height:1.4}
+.readout.readout .cond span b{font-weight:700}
+.readout.readout .formula{font-size:12.5px;line-height:1.6;color:var(--readout-dim);margin-top:12px;padding-top:12px;border-top:1px dashed var(--readout-dim)}
+.readout.readout .formula:empty{display:none}
+@media (max-width:620px){
+  .readout.readout{padding:20px 18px 18px}
+  .readout.readout .amp{font-size:52px}
+  .readout.readout .amp small{font-size:22px}
+  .readout.readout .ro-body{padding-left:0;border-left:0;padding-top:14px;border-top:1px solid var(--readout-dim)}
+}
+
+/* 상세 조건 칩: 고른 값은 강조색, 안 고른 값은 '-'로 흐리게 */
+.readout.readout .cond span.pick{border-style:dashed;color:var(--readout-dim)}
+.readout.readout .cond span.pick b{font-weight:500}
+.readout.readout .cond span.pick.sel{background:rgba(56,141,238,.16);border:1px solid var(--brand);color:#7dbbff}
+.readout.readout .cond span.pick.sel b{font-weight:700;color:#7dbbff}

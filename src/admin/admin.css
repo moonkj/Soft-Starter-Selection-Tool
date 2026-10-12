@@ -1,0 +1,60 @@
+.adm{max-width:1280px;margin:0 auto;padding:20px 20px 48px}
+.adm h1{font-size:20px;margin-bottom:4px}
+.adm .abar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.adm .abar>*{min-width:0}
+.adm .abar input[type=text]{width:auto;flex:1 1 160px}
+.adm .abar select{width:auto;flex:1 1 140px}
+.adm .stat{font-size:13.5px;margin:8px 0}
+.adm .stat b{color:var(--bad)}
+.adm .gate{max-width:360px;margin:48px auto}
+.adm .gate .row{margin:12px 0}
+.adm table{min-width:620px}
+.adm th,.adm td{width:auto;padding:7px 10px;vertical-align:middle}
+.adm th.s{cursor:pointer;user-select:none;white-space:nowrap}
+.adm th.s button{all:unset;cursor:pointer}
+.adm th.s button:focus-visible{outline:2px solid var(--accent)}
+.adm tr.off td{color:var(--muted);background:var(--surface-2)}
+.adm tr.off td.code{text-decoration:line-through}
+.adm .tgl{border:1px solid var(--line);border-radius:999px;padding:3px 12px;cursor:pointer;background:var(--ok-soft);color:var(--ok);font-weight:600;font-size:12.5px}
+.adm .tgl[aria-pressed="false"]{background:var(--bad-soft);color:var(--bad)}
+.adm h3.grp{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0 8px;font-size:15px}
+.adm h3.grp .btn{padding:4px 9px;font-size:12.5px}
+.adm .scroll{max-height:70vh;overflow:auto}
+.adm .scroll thead th{position:sticky;top:0;z-index:1}
+.adm .warnbox{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);margin-top:28px;padding-top:12px}
+.adm .selbar{background:var(--accent-soft);border-radius:8px;padding:8px 10px}
+.adm .btn:disabled{opacity:.5;cursor:default}
+
+/* ---- LS 톤 고도화 (관리자) : 토큰만 사용, .abar 접두사 유지 ---- */
+.adm{padding-block:32px 64px}
+.adm h1{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.adm .abar{gap:8px 10px}
+.adm .abar .btn,.adm .btn{border-radius:2px;min-height:36px}
+.adm .abar input[type=text],.adm .abar select{border-radius:2px;min-height:38px}
+.adm .stat{padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:2px;color:var(--muted)}
+.adm .stat b{color:var(--bad)}
+.adm .note.info{background:var(--surface-2);color:var(--muted);border:0;border-left:3px solid var(--line);border-radius:2px;padding:10px 14px;font-size:13px;line-height:1.6}
+.adm .note.info b{color:var(--ink)}
+.adm .note[role="alert"]{background:var(--bad-soft);color:var(--bad);border:1px solid var(--bad);border-left-width:4px;border-radius:2px;padding:8px 12px;font-weight:600;font-size:13px}
+.adm .gate{max-width:400px;margin:72px auto;padding:32px;border-radius:4px;border-top:3px solid var(--accent)}
+.adm .gate h1{font-size:20px;margin-bottom:6px}
+.adm .gate input[type=password]{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:2px;padding:10px 12px;min-height:42px}
+.adm .gate input[type=password]:focus{border-color:var(--accent)}
+.adm .gate .row .btn{flex:1;justify-content:center;min-height:42px}
+.adm .selbar{background:var(--accent-soft);border:1px solid var(--accent);border-radius:2px;padding:10px 14px}
+.adm .selbar b{color:var(--accent)}
+.adm .tbl-wrap{border-radius:4px;border:1px solid var(--line);border-top:2px solid var(--ink)}
+.adm table{font-size:13px}
+.adm thead th{background:var(--surface-2);color:var(--ink);font-weight:700;border-bottom:1px solid var(--ink)}
+.adm th.s button{color:var(--ink);font-weight:700;padding:2px 0}
+.adm th.s button:hover{color:var(--accent)}
+.adm tbody tr:hover td{background:var(--surface-2)}
+.adm tr.off td{color:var(--muted)}
+.adm td.mono{overflow-wrap:anywhere;word-break:break-all}
+.adm input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px}
+.adm .tgl{border-radius:2px;min-width:56px;border:1px solid var(--ok);padding:3px 10px}
+.adm .tgl[aria-pressed="false"]{border-color:var(--bad)}
+.adm h3.grp{margin:28px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);font-size:16px;font-weight:700;color:var(--ink)}
+.adm .warnbox{color:var(--muted);line-height:1.65}
+.adm code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);padding:1px 5px;border-radius:2px}
+@media (max-width:420px){.adm{padding-inline:16px}.adm .abar input[type=text],.adm .abar select{flex:1 1 100%}}

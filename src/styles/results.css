@@ -1,0 +1,119 @@
+/* C 담당: 결과 영역(카드·제외·비교·견적·자료실) + 카탈로그 모달. 색은 전부 :root 토큰만 쓴다. */
+
+/* ---------- 추천 카드 ---------- */
+.cards{gap:20px;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
+.cards .card{border-radius:4px;border:1px solid var(--line);box-shadow:none;position:relative}
+.cards .card.best{border-color:var(--accent);box-shadow:none;border-top:3px solid var(--accent)}
+@media (prefers-reduced-motion:no-preference){.cards .card{transition:border-color .15s,box-shadow .15s}.cards .card:hover{box-shadow:0 6px 20px rgba(0,0,0,.08)}}
+.cards .card-top{grid-template-columns:96px minmax(0,1fr);gap:16px;padding:20px 20px 14px}
+.cards .thumb{width:96px;height:112px;border-radius:2px;border:1px solid var(--line);background:#fff}
+.cards .tags{margin-bottom:8px}
+.cards .tag{border-radius:2px;font-size:11.5px;padding:2px 8px;letter-spacing:0}
+.cards .tag.best{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.cards .tag.na{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent)}
+.cards .series{font-size:12.5px;color:var(--muted);font-weight:500;letter-spacing:.01em}
+.cards .model{font-family:var(--mono);font-size:19px;font-weight:700;line-height:1.3;margin-top:4px;color:var(--ink);overflow-wrap:anywhere;word-break:break-all;letter-spacing:-.01em}
+.cards .model.long{font-size:14px;line-height:1.45;letter-spacing:0}
+.cards .pos{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5}
+.cards .meter{padding:6px 20px 14px}
+.cards .meter .nums{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.cards .meter .nums b{color:var(--ink);font-weight:700}
+.cards .bar{height:6px;border-radius:3px;background:var(--surface-2);border:0;box-shadow:inset 0 0 0 1px var(--line)}
+.cards .bar i{background:var(--accent);border-radius:3px}
+.cards .margin{font-weight:700}
+.cards .meter .hint{color:var(--muted)}
+.cards .alt{padding:0 20px 14px;font-size:12.5px}
+.cards .alt b{color:var(--ink)}
+.cards .notes{padding:0 20px 14px;gap:8px}
+.cards .note{position:relative;font-size:12.5px;line-height:1.5;padding:8px 10px 8px 12px;border-radius:2px}
+/* 경고: 눈에 띄게 */
+.cards .note:not(.info){background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn);border-left-width:4px;font-weight:600}
+.cards .note:not(.info)::before{content:"주의 ";font-weight:800}
+/* 안내: 차분하게 */
+.cards .note.info{background:transparent;color:var(--muted);border:0;border-left:2px solid var(--line);padding:2px 0 2px 10px;font-weight:400}
+.cards .specs{padding:14px 20px;gap:6px 14px;font-size:12.5px;border-top:1px solid var(--line)}
+.cards .specs dt{color:var(--muted)}
+.cards .specs dd{color:var(--ink)}
+.cards .card-act{padding:14px 20px;gap:8px;background:var(--surface-2)}
+.cards .card-act .btn{flex:1 1 130px;justify-content:center;border-radius:2px;min-height:40px}
+.cards .card-act .btn:not(.primary):not([aria-pressed="true"]):hover{border-color:var(--accent);color:var(--accent)}
+.cards .card-act .btn.primary:hover{filter:brightness(1.08)}
+.cards .card-act .btn[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+@media (max-width:420px){
+  .cards .card-top{grid-template-columns:72px minmax(0,1fr);gap:12px;padding:16px 16px 12px}
+  .cards .thumb{width:72px;height:88px}
+  .cards .meter,.cards .alt,.cards .notes{padding-inline:16px}
+  .cards .specs,.cards .card-act{padding-inline:16px}
+}
+
+/* ---------- 제외 목록 ---------- */
+.excluded{border-radius:4px;border:1px solid var(--line);background:var(--surface);margin-top:20px}
+.excluded summary{padding:14px 20px;font-weight:600;font-size:14px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.excluded summary::-webkit-details-marker{display:none}
+.excluded summary::after{content:"+";font-family:var(--mono);color:var(--muted);font-size:18px;line-height:1}
+.excluded[open] summary::after{content:"−"}
+.excluded[open] summary{border-bottom:1px solid var(--line)}
+.excluded ul{padding:0 20px 8px}
+.excluded li{padding:12px 0;gap:16px}
+.excluded li:first-child{border-top:0}
+.excluded li b{color:var(--ink)}
+.excluded li span{color:var(--muted)}
+.empty{border-radius:4px;border:1px dashed var(--line);background:var(--surface);color:var(--muted)}
+
+/* ---------- 모델 비교표 ---------- */
+.tbl-wrap.cmp{border-radius:4px;border:1px solid var(--line);border-top:2px solid var(--ink);background:var(--surface);-webkit-overflow-scrolling:touch}
+.cmp table{min-width:640px;font-size:13.5px}
+.cmp th,.cmp td{padding:12px 16px;border-bottom:1px solid var(--line);color:var(--ink)}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
+.cmp thead th{background:var(--surface);font-size:14.5px;font-weight:700;border-bottom:1px solid var(--ink)}
+.cmp thead th .hint{margin-top:2px;color:var(--muted)}
+.cmp tbody th{position:sticky;left:0;z-index:1;width:120px;min-width:100px;background:var(--surface-2);color:var(--muted);font-weight:600;font-size:13px;border-right:1px solid var(--line)}
+.cmp thead th:first-child{position:sticky;left:0;z-index:2}
+.cmp td .num{overflow-wrap:anywhere;word-break:break-all}
+
+/* ---------- 견적 문의 ---------- */
+.two.quote{gap:20px}
+.two .box{border-radius:4px;padding:24px;border:1px solid var(--line)}
+.two .box h3{font-size:16px;font-weight:700;color:var(--ink);padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.two .box .field>label{color:var(--muted)}
+.two .box input[type=text],.two .box input[type=email],.two .box input[type=number],.two .box textarea{border-radius:2px;padding:10px 12px}
+.two .box input:focus,.two .box textarea:focus{border-color:var(--accent)}
+.two pre.quote{border-radius:2px;background:var(--surface-2);padding:16px;font-size:12.5px;line-height:1.7;color:var(--ink);overflow-wrap:anywhere;max-height:340px}
+.two .box .btn{border-radius:2px;min-height:40px}
+
+/* ---------- 카탈로그 자료실 ---------- */
+.lib{gap:0;background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:4px;overflow:hidden}
+.lib a{border:0;border-bottom:1px solid var(--line);border-radius:0;padding:16px 20px;gap:16px;background:var(--surface)}
+.lib a:last-child{border-bottom:0}
+.lib a:hover{background:var(--surface-2);border-color:var(--line)}
+.lib a:hover b{color:var(--accent)}
+.lib b{font-size:15px;font-weight:600;color:var(--ink)}
+.lib small{display:block;margin-top:2px;color:var(--muted)}
+.lib .pdf{border-radius:2px;background:var(--bad-soft);color:var(--bad);border:1px solid var(--bad)}
+.lib .hint{white-space:nowrap}
+.lib a:hover .hint{color:var(--accent)}
+@media (max-width:420px){.lib a{grid-template-columns:36px minmax(0,1fr);padding:14px 16px}.lib .hint{display:none}.lib .pdf{width:36px}}
+
+/* ---------- 카탈로그 모달 ---------- */
+dialog.cat-dlg{border-radius:4px;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}
+dialog.cat-dlg::backdrop{background:rgba(15,21,27,.65)}
+.cat-dlg .dlg-side{background:var(--surface-2);padding:20px 16px;gap:8px}
+.cat-dlg .dlg-side h3{font-size:15px;font-weight:700;color:var(--ink)}
+.cat-dlg .dlg-side .hint{margin-bottom:8px}
+.cat-dlg .pg{border-radius:2px;color:var(--ink);padding:10px 12px;border:1px solid var(--line);background:var(--surface)}
+.cat-dlg .pg:hover{border-color:var(--accent)}
+.cat-dlg .pg[aria-current="true"]{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent);font-weight:600}
+.cat-dlg .pg span{color:var(--muted)}
+.cat-dlg .dlg-bar{padding:12px 16px;gap:12px;background:var(--surface)}
+.cat-dlg .dlg-bar .t{color:var(--ink);font-weight:700;font-size:14.5px;overflow-wrap:anywhere}
+.cat-dlg .dlg-bar .btn{border-radius:2px;min-height:40px}
+.cat-dlg .x{width:40px;height:40px;border-radius:2px;display:inline-flex;align-items:center;justify-content:center;padding:0;font-size:26px;color:var(--ink)}
+.cat-dlg .x:hover{background:var(--surface-2);color:var(--accent)}
+.cat-dlg .dlg-img{background:var(--bg);padding:20px}
+.cat-dlg .dlg-img img{box-shadow:0 2px 14px rgba(0,0,0,.22)}
+@media (max-width:720px){.cat-dlg .dlg-side{padding:10px;flex-direction:row}.cat-dlg .dlg-img{padding:10px}}
+@media (max-width:420px){dialog.cat-dlg{width:calc(100vw - 12px);max-height:calc(100vh - 12px)}.cat-dlg .dlg{height:calc(100vh - 12px)}}
+
+/* 형명의 ? 안내 */
+.cards .qhint{margin-top:6px;font-size:12.5px;line-height:1.45;color:var(--muted)}
+.cards .qhint b{display:inline-block;min-width:18px;text-align:center;margin-right:4px;padding:0 4px;border-radius:2px;background:var(--accent-soft);color:var(--accent);font-family:var(--mono)}
