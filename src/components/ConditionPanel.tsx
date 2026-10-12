@@ -63,7 +63,7 @@ export default function ConditionPanel({ s, set, onReset }: { s: FormState; set:
         <h2>사용 조건</h2>
         {onReset && <button type="button" className="linkbtn" onClick={onReset}>조건 초기화</button>}
       </div>
-      <p className="sub">전압과 모터 명판의 정격전류(A)만 넣어도 추천이 나와요. 명판을 확인하기 어려우면 'kW로 계산'을 눌러 주세요.</p>
+      <p className="sub">전압과 모터 명판의 정격전류(A)만 넣어도 추천이 나와요. 명판을 확인하기 어려우면 'kW'를 눌러 주세요.</p>
 
       <div className="field">
         <label htmlFor="volt" className="req">전원 전압</label>
@@ -84,7 +84,7 @@ export default function ConditionPanel({ s, set, onReset }: { s: FormState; set:
         <span className="lab req">모터 전류</span>
         <div className="seg modes" role="group" aria-label="모터 전류를 넣는 방법">
           <button type="button" aria-pressed={s.unit === 'A'} onClick={() => s.unit !== 'A' && set({ unit: 'A', cap: '' })}>명판 전류(A)</button>
-          <button type="button" aria-pressed={s.unit === 'kW'} onClick={() => s.unit !== 'kW' && set({ unit: 'kW', cap: '' })}>kW로 계산</button>
+          <button type="button" aria-pressed={s.unit === 'kW'} onClick={() => s.unit !== 'kW' && set({ unit: 'kW', cap: '' })}>kW</button>
         </div>
         <label htmlFor="cap" className="sr-only">{s.unit === 'A' ? '모터 정격전류 (A)' : '모터 용량 (kW)'}</label>
         <div className="row amt">

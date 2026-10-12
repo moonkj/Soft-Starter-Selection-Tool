@@ -17,7 +17,7 @@ const Admin = ADMIN_ON ? lazy(() => import('./admin/Admin')) : null
 const isAdminHash = () => ADMIN_ON && window.location.hash === '#/admin'
 
 const INITIAL: FormState = {
-  volt: 380, hz: 60, cap: '', unit: 'A', cls: 10, control: '', panel: '', ssh: SSH_DEFAULTS, lsfs: LSFS_DEFAULTS, lhvs: LHVS_DEFAULTS, amb: '', starts: '', conn: '', na: false, bp: false, pr: false,
+  volt: 380, hz: 60, cap: '55', unit: 'kW', cls: 10, control: '', panel: '', ssh: SSH_DEFAULTS, lsfs: LSFS_DEFAULTS, lhvs: LHVS_DEFAULTS, amb: '', starts: '', conn: '', na: false, bp: false, pr: false,
 }
 
 const EMPTY: SelectResult = { amp: 0, kw: null, formula: '', ok: [], excluded: [] }
@@ -84,7 +84,7 @@ export default function App() {
 
   const empty = !(capNum > 0) || !(res.amp > 0)
   const emptyMsg = f.unit === 'A'
-    ? '모터 명판의 정격전류(A)를 넣으면 추천이 나와요. 명판을 확인하기 어려우면 왼쪽에서 "kW로 계산"을 눌러 주세요.'
+    ? '모터 명판의 정격전류(A)를 넣으면 추천이 나와요. 명판을 확인하기 어려우면 왼쪽에서 "kW"를 눌러 주세요.'
     : '모터 용량(kW)을 넣으면 추천이 나와요. 명판 전류(A)를 알면 "명판 전류(A)"로 넣는 게 더 정확해요.'
   const selCmp = cmp.filter((x) => x.sig === sig).map((x) => x.r)
   const inCmp = (r: Recommendation) => selCmp.some((x) => x.seriesId === r.seriesId && x.model === r.model)

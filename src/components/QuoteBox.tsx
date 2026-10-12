@@ -70,7 +70,7 @@ export default function QuoteBox({ s, amp, pick, toast }: {
     <div className="two quote">
       <form className="box" autoComplete="on" onSubmit={(e) => e.preventDefault()}>
         <h3>연락처</h3>
-        <div className="field"><label htmlFor="q-co">회사명</label><input type="text" id="q-co" autoComplete="organization" placeholder="예: 한빛수처리" value={co} onChange={(e) => setCo(e.target.value)} /></div>
+        <div className="field"><label htmlFor="q-co">회사명</label><input type="text" id="q-co" autoComplete="organization" placeholder="예: LS ELECTRIC" value={co} onChange={(e) => setCo(e.target.value)} /></div>
         <div className="row">
           <div className="field grow"><label htmlFor="q-name">담당자</label><input type="text" id="q-name" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} /></div>
           <div className="field" style={{ width: 96 }}><label htmlFor="q-qty">수량</label><input type="number" id="q-qty" min="1" className="num" value={qty} onChange={(e) => setQty(e.target.value)} /></div>
